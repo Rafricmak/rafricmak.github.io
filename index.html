@@ -4,27 +4,17 @@
   <meta charset="UTF-8">
   <title>Bienvenue</title>
   <style>
-    body {<div id="header"></div>
-<script>
-  fetch("header.html")
-    .then(res => res.text())
-    .then(html => document.getElementById("header").innerHTML = html);
-</script>
-
+    body {
       margin: 0;
       padding: 50px 0;
       text-align: center;
       font-family: 'Courier New', monospace;
       color: #ffffff;
       background-color: #2f2f2f;
-      background-image: url(https://i.imgur.com/GydXeMw.jpeg);
+      background-image: url(https://i.imgur.com/GydXeMw.jpeg); /* ton image ici */
       background-size: 1500px auto;
       background-repeat: no-repeat;
       background-position: center top;
-    }
-
-    nav {
-      position: relative;
     }
 
     nav ul {
@@ -32,94 +22,18 @@
       margin: 0;
       padding: 10px 0;
       background-color: rgba(0, 0, 0, 0.8);
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding-left: 20px;
     }
-
     nav ul li {
-      margin-right: 20px;
+      display: inline-block;
+      margin: 0 20px;
     }
-
     nav ul li a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
     }
-
     nav ul li a:hover {
       color: #ccc;
-    }
-
-    .social-bar {
-      position: absolute;
-      top: 5px; /* ajusté pour monter un peu */
-      right: 20px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .social-bar a {
-      display: inline-block;
-    }
-
-    .social-bar img.icon {
-      width: 30px;
-      height: 30px;
-      transition: 0.3s ease;
-      vertical-align: middle;
-    }
-
-    .social-bar img.icon:hover {
-      opacity: 0.75;
-    }
-
-    .tooltip {
-      position: relative;
-      display: inline-block;
-    }
-
-    .tooltip .tooltiptext {
-      visibility: hidden;
-      width: 80px;
-      background-color: #000;
-      color: #fff;
-      text-align: center;
-      border-radius: 5px;
-      padding: 5px 0;
-      position: absolute;
-      z-index: 1;
-      bottom: 125%;
-      left: 50%;
-      margin-left: -40px;
-      opacity: 0;
-      transition: opacity 0.3s;
-      font-size: 12px;
-    }
-
-    .tooltip:hover .tooltiptext {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .pp-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-left: 10px;
-    }
-
-    .pp-container img {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-    }
-
-    .pp-container p {
-      margin: 2px 0 0 0;
-      font-size: 12px;
     }
 
     .content {
@@ -127,14 +41,6 @@
       margin: 50px auto;
     }
   </style>
-
-  <script>
-    function copyEmail() {
-      navigator.clipboard.writeText("rafricmak@gmail.com")
-        .then(() => alert("Adresse email copiée dans le presse-papiers !"))
-        .catch(err => alert("Erreur lors de la copie de l'adresse email."));
-    }
-  </script>
 </head>
 <body>
   <nav>
@@ -143,32 +49,6 @@
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="galerie.html">Galerie</a></li>
     </ul>
-
-    <!-- Réseaux sociaux + PP -->
-    <div class="social-bar">
-      <div class="tooltip">
-        <a href="https://discord.gg/2nYVtahdZJ" target="_blank">
-          <img class="icon" src="https://i.imgur.com/HvEteSA.png" alt="Discord">
-        </a>
-        <span class="tooltiptext">Discord</span>
-      </div>
-      <div class="tooltip">
-        <a href="https://www.instagram.com/rafricmak_13/" target="_blank">
-          <img class="icon" src="https://i.imgur.com/8vAkg1u.png" alt="Instagram">
-        </a>
-        <span class="tooltiptext">Instagram</span>
-      </div>
-      <div class="tooltip">
-        <a href="#" onclick="copyEmail()">
-          <img class="icon" src="https://i.imgur.com/tqanmFS.png" alt="Gmail">
-        </a>
-        <span class="tooltiptext">Gmail</span>
-      </div>
-      <div class="pp-container">
-        <img src="https://i.imgur.com/R2JQxd9.png" alt="PP">
-        <p>Rafricmak</p>
-      </div>
-    </div>
   </nav>
 
   <div class="content">
