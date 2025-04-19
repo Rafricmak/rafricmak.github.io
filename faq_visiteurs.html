@@ -2,42 +2,92 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>FAQ Visiteurs</title>
+  <title>FAQ des Visiteurs</title>
   <style>
-    body {
+    html {
+      width: 100%;
+      overflow-x: hidden;
+    }
 
+    body {
       margin: 0;
-      padding: 0;
+      padding-top: 60px;
       font-family: 'Courier New', monospace;
       color: #fff;
       background-color: #1a1a1a;
-      background-image: url(https://i.imgur.com/rpviD9N.jpeg);
+      background-image: url('https://i.imgur.com/7F6IqWL.jpeg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      overflow-x: hidden;
     }
 
-    nav ul {
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+    }
+
+    .nav-links {
       list-style: none;
       margin: 0;
-      padding: 10px 0;
-      background-color: rgba(0, 0, 0, 0.7);
-      text-align: center;
+      padding: 0;
+      display: flex;
+      gap: 40px;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      top: 50%;
     }
 
-    nav ul li {
-      display: inline-block;
-      margin: 0 20px;
-    }
-
-    nav ul li a {
+    .nav-links li a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
+      font-family: 'Courier New', monospace;
     }
 
-    nav ul li a:hover {
+    .nav-links li a:hover {
       color: #ccc;
+    }
+
+    .nav-right {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-icons img {
+      height: 30px;
+      cursor: pointer;
+    }
+
+    .profile {
+      text-align: center;
+    }
+
+    .profile img {
+      height: 48px;
+      border-radius: 6px;
+    }
+
+    .profile-name {
+      color: #fff;
+      font-size: 13px;
+      font-family: monospace;
     }
 
     .faq-container {
@@ -55,82 +105,75 @@
     }
 
     .question {
-      font-family: 'Lucida Console', monospace;
       text-align: left;
       font-weight: bold;
       margin-top: 40px;
       font-size: 18px;
+      font-family: 'Lucida Console', monospace;
     }
 
     .reponse {
-      font-family: 'Courier New', monospace;
       text-align: left;
       margin-left: 30px;
       margin-top: 8px;
       font-size: 16px;
-    }
-
-    form {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      margin-top: 50px;
-      border-radius: 10px;
-    }
-
-    label, button {
-      font-size: 18px;
-    }
-
-    textarea {
-      width: 100%;
-      font-size: 16px;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-      border: none;
-      background-color: #333;
-      color: white;
-    }
-
-    button {
-      background-color: #555;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 15px;
-    }
-
-    button:hover {
-      background-color: #777;
+      font-family: 'Courier New', monospace;
     }
   </style>
 </head>
+
 <body>
+
+  <!-- MENU AVEC ICONES -->
   <nav>
-    <ul>
+    <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="galerie.html">Galerie</a></li>
     </ul>
+
+    <div class="nav-right">
+      <div class="nav-icons">
+        <a href="https://discord.gg/2nYVtahdZJ" target="_blank" title="Mon Discord">
+          <img src="https://i.imgur.com/HvEteSA.png" alt="Discord">
+        </a>
+        <a href="https://www.instagram.com/rafricmak_13/" target="_blank" title="Mon Instagram">
+          <img src="https://i.imgur.com/8vAkg1u.png" alt="Instagram">
+        </a>
+        <a href="#" onclick="copyMail()" title="Clique pour copier mon mail">
+          <img src="https://i.imgur.com/tqanmFS.png" alt="Gmail">
+        </a>
+      </div>
+
+      <div class="profile">
+        <img src="https://i.imgur.com/R2JQxd9.png" alt="Rafricmak"><br>
+        <span class="profile-name">Rafricmak</span>
+      </div>
+    </div>
   </nav>
 
   <div class="faq-container">
-    <h1>En ces lieux, vous pouvez vous délecter des questions des visiteurs (et surtout mes réponses).</h1>
+    <h1>Questions posées par les visiteurs</h1>
 
-    <p class="question">Que faut-il faire en cas d'éclipse ?</p>
-    <p class="reponse">La fixer droit dans les yeux ! Nan mais elle se prend pour qui cette lune, à gâcher la vue ! Si tu la fixes assez, elle sera intimidée et partira en laissant notre soleil en paix.</p>
-    </p>
+    <!-- Ici tu pourras insérer tes propres réponses aux questions filtrées -->
+    <!-- Copie-colle ce modèle pour chaque nouvelle entrée -->
 
-    <p class="question">Tu es satisfait ?</p>
-    <p class="reponse">Hein ? Désolé, mais je ne comprends pas la question. Satisfait de quoi ? Donne un peu de contexte, non ? Nous sommes des gens sérieux ici.</p>
+    <p class="question">[Question posée ici]</p>
+    <p class="reponse">[Ta réponse ici]</p>
 
-    <!-- Formulaire visiteur -->
-    <form action="https://formspree.io/f/xvgkekak" method="POST">
-      <label for="question">D'autres demandes ? Ben c'est toujours au même endroit. Tu croyais quoi ? Pourquoi ça changerait ?</label><br>
-      <textarea name="question" rows="4" cols="40" placeholder="Écris ta question ici..."></textarea><br>
-      <button type="submit">Surcharger ma boîte mail de ta méconnaissance.</button>
-    </form>
+    <!-- Exemple -->
+    <!--
+    <p class="question">Pourquoi as-tu un canard empaillé sur une étagère ?</p>
+    <p class="reponse">Parce que c’est un héritage spirituel. Et un très bon conseiller aussi.</p>
+    -->
   </div>
+
+  <script>
+    function copyMail() {
+      navigator.clipboard.writeText("rafricmak@gmail.com");
+      alert("Adresse e-mail copiée !");
+    }
+  </script>
+
 </body>
 </html>
