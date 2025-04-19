@@ -43,37 +43,26 @@
   </style>
 </head>
 <body>
- <nav style="display: flex; justify-content: space-between; align-items: center; background-color: rgba(0, 0, 0, 0.7); padding: 10px 30px;">
-  <!-- Liens du menu -->
-  <ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 40px;">
-    <li><a href="index.html" style="color: #fff; text-decoration: none; font-weight: bold;">Accueil</a></li>
-    <li><a href="faq.html" style="color: #fff; text-decoration: none; font-weight: bold;">FAQ</a></li>
-    <li><a href="galerie.html" style="color: #fff; text-decoration: none; font-weight: bold;">Galerie</a></li>
+ <!-- Menu de navigation -->
+<nav style="position: fixed; top: 0; left: 0; right: 0; height: 60px; background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 1000;">
+  
+  <!-- Liens de navigation centrés -->
+  <ul style="list-style: none; display: flex; margin: 0 auto; padding: 0; gap: 40px;">
+    <li><a href="index.html" style="color: #fff; text-decoration: none; font-weight: bold; font-family: 'Courier New', monospace;">Accueil</a></li>
+    <li><a href="faq.html" style="color: #fff; text-decoration: none; font-weight: bold; font-family: 'Courier New', monospace;">FAQ</a></li>
+    <li><a href="galerie.html" style="color: #fff; text-decoration: none; font-weight: bold; font-family: 'Courier New', monospace;">Galerie</a></li>
   </ul>
 
-  <!-- Bloc perso avec PP, nom, et liens -->
-  <div style="display: flex; align-items: center; gap: 20px;">
+  <!-- Icônes + PP à droite -->
+  <div style="display: flex; align-items: center; gap: 20px; position: absolute; right: 30px;">
     
-    <!-- Icônes réseaux -->
+    <!-- Icônes -->
     <div style="display: flex; gap: 12px;">
-      <a href="https://discord.gg/2nYVtahdZJ" target="_blank">
-        <img src="https://i.imgur.com/HvEteSA.png" alt="Discord" title="Mon Discord" style="height: 32px;">
+      <a href="https://discord.gg/2nYVtahdZJ" target="_blank" title="Mon Discord">
+        <img src="https://i.imgur.com/HvEteSA.png" alt="Discord" style="height: 30px;">
       </a>
-      <a href="https://www.instagram.com/rafricmak_13/" target="_blank">
-        <img src="https://i.imgur.com/8vAkg1u.png" alt="Instagram" title="Mon Insta" style="height: 32px;">
-      </a>
-      <a href="#" onclick="copyMail()" title="Clique pour copier mon mail">
-        <img src="https://i.imgur.com/tqanmFS.png" alt="Gmail" style="height: 32px;">
-      </a>
-    </div>
+      <a href="https://www.instagram.com/rafricmak_13/" target="_blank" title="
 
-    <!-- Photo + nom -->
-    <div style="text-align: center;">
-      <img src="https://i.imgur.com/R2JQxd9.png" alt="Rafricmak" style="height: 50px; border-radius: 8px;"><br>
-      <span style="color: #fff; font-family: 'Courier New', monospace; font-size: 14px;">Rafricmak</span>
-    </div>
-  </div>
-</nav>
 
 <!-- Script pour copier le mail -->
 <script>
