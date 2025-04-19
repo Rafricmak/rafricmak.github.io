@@ -4,80 +4,137 @@
   <meta charset="UTF-8">
   <title>Bienvenue</title>
   <style>
-body {
-  margin: 0;
-  padding-top: 60px; /* hauteur du menu fixe */
-}
     body {
       margin: 0;
-      padding: 50px 0;
-      text-align: center;
+      padding-top: 60px; /* pour laisser la place au menu fixe */
       font-family: 'Courier New', monospace;
       color: #ffffff;
       background-color: #2f2f2f;
-      background-image: url(https://i.imgur.com/GydXeMw.jpeg); /* ton image ici */
+      background-image: url(https://i.imgur.com/GydXeMw.jpeg);
       background-size: 1500px auto;
       background-repeat: no-repeat;
       background-position: center top;
+      text-align: center;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      z-index: 1000;
     }
 
     nav ul {
       list-style: none;
+      display: flex;
       margin: 0;
-      padding: 10px 0;
-      background-color: rgba(0, 0, 0, 0.8);
+      padding: 0;
+      gap: 40px;
     }
-    nav ul li {
-      display: inline-block;
-      margin: 0 20px;
-    }
+
     nav ul li a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
+      font-family: 'Courier New', monospace;
     }
+
     nav ul li a:hover {
       color: #ccc;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-icons img {
+      height: 30px;
+      cursor: pointer;
+    }
+
+    .profile {
+      text-align: center;
+    }
+
+    .profile img {
+      height: 48px;
+      border-radius: 6px;
+    }
+
+    .profile-name {
+      color: #fff;
+      font-size: 13px;
+      font-family: monospace;
+    }
+
     .content {
       max-width: 800px;
-      margin: 50px auto;
+      margin: 80px auto;
     }
   </style>
 </head>
 <body>
- <!-- Menu de navigation -->
-<nav style="position: fixed; top: 0; left: 0; right: 0; height: 60px; background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 1000;">
-  
-  <!-- Liens de navigation centrés -->
-  <ul style="list-style: none; display: flex; margin: 0 auto; padding: 0; gap: 40px;">
-    <li><a href="index.html" style="color: #fff; text-decoration: none; font-weight: bold; font-family: 'Courier New', monospace;">Accueil</a></li>
-    <li><a href="faq.html" style="color: #fff; text-decoration: none; font-weight: bold; font-family: 'Courier New', monospace;">FAQ</a></li>
-    <li><a href="galerie.html" style="color: #fff; text-decoration: none; font-weight: bold; font-family: 'Courier New', monospace;">Galerie</a></li>
-  </ul>
 
-  <!-- Icônes + PP à droite -->
-  <div style="display: flex; align-items: center; gap: 20px; position: absolute; right: 30px;">
-    
-    <!-- Icônes -->
-    <div style="display: flex; gap: 12px;">
-      <a href="https://discord.gg/2nYVtahdZJ" target="_blank" title="Mon Discord">
-        <img src="https://i.imgur.com/HvEteSA.png" alt="Discord" style="height: 30px;">
-      </a>
-      <a href="https://www.instagram.com/rafricmak_13/" target="_blank" title="
+  <!-- MENU FIXE -->
+  <nav>
+    <!-- Liens à gauche -->
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+    </ul>
 
+    <!-- Partie droite : icônes + pp -->
+    <div class="nav-right">
+      <!-- Icônes -->
+      <div class="nav-icons">
+        <a href="https://discord.gg/2nYVtahdZJ" target="_blank" title="Mon Discord">
+          <img src="https://i.imgur.com/HvEteSA.png" alt="Discord">
+        </a>
+        <a href="https://www.instagram.com/rafricmak_13/" target="_blank" title="Mon Instagram">
+          <img src="https://i.imgur.com/8vAkg1u.png" alt="Instagram">
+        </a>
+        <a href="#" onclick="copyMail()" title="Clique pour copier mon email">
+          <img src="https://i.imgur.com/tqanmFS.png" alt="Gmail">
+        </a>
+      </div>
 
-<!-- Script pour copier le mail -->
-<script>
-  function copyMail() {
-    navigator.clipboard.writeText("rafricmak@gmail.com");
+      <!-- Photo + nom -->
+      <div class="profile">
+        <img src="https://i.imgur.com/R2JQxd9.png" alt="Rafricmak"><br>
+        <span class="profile-name">Rafricmak</span>
+      </div>
+    </div>
+  </nav>
 
-
+  <!-- CONTENU DE LA PAGE -->
   <div class="content">
     <h1>Bienvenue sur le site de Rafricmak</h1>
     <p>Cette page ne sert à rien. Tout comme notre misérable existence.</p>
     <p>Mais j'ai un site ! C'est cool hein ?</p>
   </div>
+
+  <!-- Script pour copier l'adresse Gmail -->
+  <script>
+    function copyMail() {
+      navigator.clipboard.writeText("rafricmak@gmail.com");
+      alert("Adresse e-mail copiée !");
+    }
+  </script>
+
 </body>
 </html>
