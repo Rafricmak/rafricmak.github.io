@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <title>Bienvenue</title>
   <style>
-    body {
+    body {<div id="header"></div>
+<script>
+  fetch("header.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("header").innerHTML = html);
+</script>
+
       margin: 0;
       padding: 50px 0;
       text-align: center;
