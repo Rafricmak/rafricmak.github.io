@@ -43,13 +43,43 @@
   </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="galerie.html">Galerie</a></li>
-    </ul>
-  </nav>
+ <nav style="display: flex; justify-content: space-between; align-items: center; background-color: rgba(0, 0, 0, 0.7); padding: 10px 30px;">
+  <!-- Liens du menu -->
+  <ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 40px;">
+    <li><a href="index.html" style="color: #fff; text-decoration: none; font-weight: bold;">Accueil</a></li>
+    <li><a href="faq.html" style="color: #fff; text-decoration: none; font-weight: bold;">FAQ</a></li>
+    <li><a href="galerie.html" style="color: #fff; text-decoration: none; font-weight: bold;">Galerie</a></li>
+  </ul>
+
+  <!-- Bloc perso avec PP, nom, et liens -->
+  <div style="display: flex; align-items: center; gap: 20px;">
+    
+    <!-- Icônes réseaux -->
+    <div style="display: flex; gap: 12px;">
+      <a href="https://discord.gg/2nYVtahdZJ" target="_blank">
+        <img src="https://i.imgur.com/HvEteSA.png" alt="Discord" title="Mon Discord" style="height: 32px;">
+      </a>
+      <a href="https://www.instagram.com/rafricmak_13/" target="_blank">
+        <img src="https://i.imgur.com/8vAkg1u.png" alt="Instagram" title="Mon Insta" style="height: 32px;">
+      </a>
+      <a href="#" onclick="copyMail()" title="Clique pour copier mon mail">
+        <img src="https://i.imgur.com/tqanmFS.png" alt="Gmail" style="height: 32px;">
+      </a>
+    </div>
+
+    <!-- Photo + nom -->
+    <div style="text-align: center;">
+      <img src="https://i.imgur.com/R2JQxd9.png" alt="Rafricmak" style="height: 50px; border-radius: 8px;"><br>
+      <span style="color: #fff; font-family: 'Courier New', monospace; font-size: 14px;">Rafricmak</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Script pour copier le mail -->
+<script>
+  function copyMail() {
+    navigator.clipboard.writeText("rafricmak@gmail.com");
+
 
   <div class="content">
     <h1>Bienvenue sur le site de Rafricmak</h1>
