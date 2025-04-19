@@ -83,34 +83,55 @@
       font-family: monospace;
     }
 
-    /* Galerie d’images */
+    /* G A L E R I E */
     .galerie {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 35px;
       max-width: 1000px;
       margin: 80px auto;
       position: relative;
-      z-index: 10; /* toujours au-dessus des étoiles */
+      z-index: 10;
     }
 
     .galerie img {
       width: 30%;
       border: 3px solid white;
       box-shadow: 0 0 12px rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: transform 0.2s;
     }
 
     .galerie img:hover {
       transform: scale(1.05);
-      transition: 0.2s;
     }
 
-    /* Étoiles aléatoires */
+    /* ZOOM MODE */
+    #zoom {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #zoom img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 5px solid white;
+    }
+
+    /* ÉTOILES ANIMÉES */
     .star {
       position: absolute;
-      width: 60px;
-      height: 60px;
+      width: 100px;
+      height: 100px;
       z-index: 1;
       pointer-events: none;
     }
@@ -147,11 +168,16 @@
     </div>
   </nav>
 
-  <!-- GALERIE -->
+  <!-- G A L E R I E -->
   <div class="galerie">
-    <img src="https://i.imgur.com/Ch6rRtz.jpeg" alt="Ce n’est pas ce que vous croyez.">
-    <img src="https://i.imgur.com/MTQIxan.jpeg" alt="La vie avant le bug.">
-    <img src="https://i.imgur.com/9SVU2Dx.jpeg" alt="Encore un souvenir impossible.">
+    <img src="https://i.imgur.com/Ch6rRtz.jpeg" title="Ce n’est pas ce que vous croyez.">
+    <img src="https://i.imgur.com/MTQIxan.jpeg" title="La vie avant le bug.">
+    <img src="https://i.imgur.com/9SVU2Dx.jpeg" title="Encore un souvenir impossible.">
+  </div>
+
+  <!-- ZOOM POPUP -->
+  <div id="zoom" onclick="this.style.display='none'">
+    <img src="" id="zoom-img">
   </div>
 
   <!-- ÉTOILES ALÉATOIRES -->
@@ -170,7 +196,7 @@
       const url = starUrls[Math.floor(Math.random() * starUrls.length)];
       star.src = url;
       star.className = "star";
-      star.style.top = Math.random() * 1500 + "px";
+      star.style.top = Math.random() * 2000 + "px";
       star.style.left = Math.random() * window.innerWidth + "px";
       document.body.appendChild(star);
     }
@@ -179,6 +205,18 @@
       navigator.clipboard.writeText("rafricmak@gmail.com");
       alert("Adresse e-mail copiée !");
     }
+
+    // ZOOM IMAGE
+    const images = document.querySelectorAll('.galerie img');
+    const zoomBox = document.getElementById('zoom');
+    const zoomImg = document.getElementById('zoom-img');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        zoomImg.src = img.src;
+        zoomBox.style.display = 'flex';
+      });
+    });
   </script>
 
 </body>
