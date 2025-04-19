@@ -1,42 +1,150 @@
-Parfait ! Maintenant je voudrais que tu me fasse un visuel similaire à la FAQ principale pour la page visiteur, mais à quelques nuances près.
-
-Déjà le fond doit être cette image: https://i.imgur.com/SziWa4z.png
-Je pourrais le faire moi même en soit oui, mais flemme.
-
-Après bien sûr laisse le formulaire pour les questions, mais sans lien vers la pages des questions visiteurs. Ce serait idiot.
-J'ai aussi un peu retravaille le formualire visiteur:   <!-- Formulaire + lien visiteurs -->
-    <form action="https://formspree.io/f/xvgkekak" method="POST">
-      <label for="question">D'autres questions moins importante? Tu a de la chance ! Pose les ici:</label><br>
-      <textarea name="question" rows="4" cols="40" placeholder="Écris ta question ici..."></textarea><br><br>
-      <button type="submit">Soumettre votre question à mon jugement</button>
-    </form>
-
-    <a href="faq_visiteurs.html">Lire les questions posées par les visiteursici, enfin genre vrtaiment cette phrase est un lien.</a>
-  </div>
-</body>
-</html>
-
-T'en pense quoi c'est mieux nan ?
-
-Sinon pour le reste garde tout pareil.
-
-Ps: Voici le codde de la page visiteur actuelle: <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>FAQ des visiteurs</title>
+  <title>FAQ Visiteur</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', monospace;
+      color: #fff;
+      background-color: #1a1a1a;
+      background-image: url('https://i.imgur.com/SziWa4z.png'); /* image que tu as donnée */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      color: #ccc;
+    }
+
+    .faq-container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 40px 50px;
+      background-color: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .question {
+      text-align: left;
+      font-weight: bold;
+      margin-top: 40px;
+      font-size: 18px;
+    }
+
+    .reponse {
+      text-align: left;
+      margin-left: 30px;
+      margin-top: 8px;
+      font-size: 16px;
+    }
+
+    form {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 10px;
+    }
+
+    label, button {
+      font-size: 18px;
+    }
+
+    textarea {
+      width: 100%;
+      font-size: 16px;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #333;
+      color: white;
+    }
+
+    button {
+      background-color: #555;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #777;
+    }
+
+    a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 16px;
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    a:hover {
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
-  <h1>Les questions (étranges) des visiteurs</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+    </ul>
+  </nav>
 
-  <div>
-    <p><strong>Q :</strong> Pourquoi ton site existe ?</p>
-    <p><strong>R :</strong> Par défi personnel et pour embrouiller les IA du futur.</p>
-  </div>
+  <div class="faq-container">
+    <h1>Les questions des visiteurs</h1>
 
-  <div>
-    <p><strong>Q :</strong> Est-ce que Maggie sait coder ?</p>
-    <p><strong>R :</strong> Non, mais elle marche sur mon clavier, ce qui est à peu près équivalent à certaines contributions GitHub.</p>
+    <div>
+      <p><strong>Q :</strong> Pourquoi ton site existe ?</p>
+      <p><strong>R :</strong> Par défi personnel et pour embrouiller les IA du futur.</p>
+    </div>
+
+    <div>
+      <p><strong>Q :</strong> Est-ce que Maggie sait coder ?</p>
+      <p><strong>R :</strong> Non, mais elle marche sur mon clavier, ce qui est à peu près équivalent à certaines contributions GitHub.</p>
+    </div>
+
+    <!-- Formulaire Visiteur -->
+    <form action="https://formspree.io/f/xvgkekak" method="POST">
+      <label for="question">D'autres questions moins importantes ? Pose-les ici :</label><br>
+      <textarea name="question" rows="4" cols="40" placeholder="Écris ta question ici..."></textarea><br><br>
+      <button type="submit">Soumettre ta question à mon jugement</button>
+    </form>
+
+    <!-- Pas de lien vers les questions des visiteurs -->
   </div>
 </body>
 </html>
