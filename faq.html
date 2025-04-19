@@ -2,8 +2,62 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>FAQ absurde</title>
-  <link rel="stylesheet" href="style.css">
+  <title>FAQ</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', monospace;
+      color: #fff;
+      background-color: #1a1a1a;
+      background-image: url('https://i.imgur.com/7F6IqWL.jpeg'); /* change le lien si tu veux */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      color: #ccc;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 100px auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .question {
+      text-align: right;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    .reponse {
+      text-align: left;
+      margin-left: 20px;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -14,13 +68,20 @@
     </ul>
   </nav>
 
-  <div class="container">
-    <h1>FAQ absurde</h1>
-    <ul>
-      <li><strong>Q : Pourquoi suis-je la perfection ?</strong><br>
-          A : Parce que l’univers a décidé de faire une blague.</li>
-      <!-- Ajoute ici tes Q/R absurdes -->
-    </ul>
+  <div class="faq-container">
+    <h1 style="text-align:center;">FAQ Absurde</h1>
+
+    <p class="question">Pourquoi suis-je la perfection ?</p>
+    <p class="reponse">Parce que l’univers a atteint son pic d’évolution avec moi, tout simplement.</p>
+
+    <p class="question">Est-ce que les pigeons me jugent ?</p>
+    <p class="reponse">Oui. Surtout celui qui te regarde depuis le lampadaire. Il sait ce que tu as fait.</p>
+
+    <p class="question">Si je me mange moi-même, est-ce que je deviens deux fois plus puissant ou je disparais ?</p>
+    <p class="reponse">Les scientifiques hésitent encore entre “trou noir instantané” et “transcendance dimensionnelle”.</p>
+
+    <p class="question">Peut-on respirer dans l’espace si on prend une grande inspiration avant ?</p>
+    <p class="reponse">Oui. Pendant environ 12 secondes. Puis tu exploses. Mais c’est poétique.</p>
   </div>
 </body>
 </html>
