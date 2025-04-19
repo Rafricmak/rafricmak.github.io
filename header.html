@@ -1,0 +1,135 @@
+<style>
+  nav {
+    position: relative;
+    width: 100%;
+  }
+
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 0 20px;
+  }
+
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  nav ul li a:hover {
+    color: #ccc;
+  }
+
+  .social-bar {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .social-bar img.icon {
+    width: 30px;
+    height: 30px;
+    transition: 0.3s ease;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .social-bar img.icon:hover {
+    opacity: 0.75;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 80px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -40px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .pp-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pp-container img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+
+  .pp-container p {
+    margin: 2px 0 0 0;
+    font-size: 12px;
+    color: white;
+  }
+</style>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="galerie.html">Galerie</a></li>
+  </ul>
+
+  <div class="social-bar">
+    <div class="tooltip">
+      <a href="https://discord.gg/2nYVtahdZJ" target="_blank">
+        <img class="icon" src="https://i.imgur.com/HvEteSA.png" alt="Discord">
+      </a>
+      <span class="tooltiptext">Discord</span>
+    </div>
+
+    <div class="tooltip">
+      <a href="https://www.instagram.com/rafricmak_13/" target="_blank">
+        <img class="icon" src="https://i.imgur.com/8vAkg1u.png" alt="Instagram">
+      </a>
+      <span class="tooltiptext">Instagram</span>
+    </div>
+
+    <div class="tooltip">
+      <a href="#" onclick="navigator.clipboard.writeText('rafricmak@gmail.com'); alert('Adresse email copiée !'); return false;">
+        <img class="icon" src="https://i.imgur.com/tqanmFS.png" alt="Gmail">
+      </a>
+      <span class="tooltiptext">Gmail</span>
+    </div>
+
+    <div class="pp-container">
+      <img src="https://i.imgur.com/R2JQxd9.png" alt="PP">
+      <p>Rafricmak</p>
+    </div>
+  </div>
+</nav>
