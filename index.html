@@ -48,7 +48,7 @@
 
     .social-bar {
       position: absolute;
-      top: 10px;
+      top: 5px; /* ajusté pour monter un peu */
       right: 20px;
       display: flex;
       align-items: center;
@@ -60,13 +60,14 @@
     }
 
     .social-bar img.icon {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       transition: 0.3s ease;
+      vertical-align: middle;
     }
 
     .social-bar img.icon:hover {
-      opacity: 0.7;
+      opacity: 0.75;
     }
 
     .tooltip {
@@ -84,7 +85,7 @@
       padding: 5px 0;
       position: absolute;
       z-index: 1;
-      bottom: 125%; /* au-dessus */
+      bottom: 125%;
       left: 50%;
       margin-left: -40px;
       opacity: 0;
@@ -101,6 +102,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-left: 10px;
     }
 
     .pp-container img {
@@ -119,6 +121,14 @@
       margin: 50px auto;
     }
   </style>
+
+  <script>
+    function copyEmail() {
+      navigator.clipboard.writeText("rafricmak@gmail.com")
+        .then(() => alert("Adresse email copiée dans le presse-papiers !"))
+        .catch(err => alert("Erreur lors de la copie de l'adresse email."));
+    }
+  </script>
 </head>
 <body>
   <nav>
@@ -131,26 +141,25 @@
     <!-- Réseaux sociaux + PP -->
     <div class="social-bar">
       <div class="tooltip">
-        <a href="https://discord.com/users/TON_ID" target="_blank">
-          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="Discord">
+        <a href="https://discord.gg/2nYVtahdZJ" target="_blank">
+          <img class="icon" src="https://i.imgur.com/HvEteSA.png" alt="Discord">
         </a>
         <span class="tooltiptext">Discord</span>
       </div>
       <div class="tooltip">
-        <a href="https://www.instagram.com/TON_INSTA" target="_blank">
-          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+        <a href="https://www.instagram.com/rafricmak_13/" target="_blank">
+          <img class="icon" src="https://i.imgur.com/8vAkg1u.png" alt="Instagram">
         </a>
         <span class="tooltiptext">Instagram</span>
       </div>
       <div class="tooltip">
-        <a href="mailto:TON_ADRESSE@email.com">
-          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
+        <a href="#" onclick="copyEmail()">
+          <img class="icon" src="https://i.imgur.com/tqanmFS.png" alt="Gmail">
         </a>
         <span class="tooltiptext">Gmail</span>
       </div>
-
       <div class="pp-container">
-        <img src="https://i.imgur.com/YOURPP.png" alt="PP">
+        <img src="https://i.imgur.com/R2JQxd9.png" alt="PP">
         <p>Rafricmak</p>
       </div>
     </div>
