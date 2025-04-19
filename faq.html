@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>FAQ Visiteur</title>
+  <title>FAQ</title>
   <style>
     body {
       margin: 0;
@@ -10,7 +10,7 @@
       font-family: 'Courier New', monospace;
       color: #fff;
       background-color: #1a1a1a;
-      background-image: url('https://i.imgur.com/SziWa4z.png'); /* image que tu as donnée */
+      background-image: url('https://i.imgur.com/7F6IqWL.jpeg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -58,6 +58,7 @@
       font-weight: bold;
       margin-top: 40px;
       font-size: 18px;
+      font-family: 'Lucida Console', monospace;
     }
 
     .reponse {
@@ -65,53 +66,64 @@
       margin-left: 30px;
       margin-top: 8px;
       font-size: 16px;
+      font-family: 'Courier New', monospace;
     }
 
-    form {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      margin-top: 30px;
-      border-radius: 10px;
+    .faq-container .reponse strong,
+    .faq-container .question strong {
+      font-weight: bold;
     }
 
-    label, button {
-      font-size: 18px;
+    .faq-container form {
+      margin-top: 60px;
+      text-align: left;
     }
 
-    textarea {
+    .faq-container textarea {
       width: 100%;
-      font-size: 16px;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-      border: none;
-      background-color: #333;
-      color: white;
+      font-family: 'Courier New', monospace;
     }
 
-    button {
-      background-color: #555;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #777;
-    }
-
-    a {
-      color: #ccc;
-      text-decoration: none;
-      font-size: 16px;
+    .faq-container a {
       display: block;
       margin-top: 20px;
-      text-align: center;
+      color: #ddd;
+      text-decoration: underline;
     }
 
-    a:hover {
-      color: #fff;
+    /* Mots-clés en majuscules qu'on met en gras automatiquement */
+    .reponse, .question {
+      font-variant-ligatures: none;
+    }
+
+    .reponse::before, .question::before {
+      content: "";
+    }
+
+    .question, .reponse {
+      white-space: pre-line;
+    }
+
+    .question, .reponse {
+      unicode-bidi: plaintext;
+    }
+
+    .question, .reponse {
+      font-weight: normal;
+    }
+
+    .question::first-letter,
+    .reponse::first-letter {
+      text-transform: none;
+    }
+
+    /* Grasse les pronoms ciblés en majuscules */
+    .reponse, .question {
+      font-weight: normal;
+    }
+
+    .question strong, .reponse strong {
+      font-weight: bold;
     }
   </style>
 </head>
@@ -125,26 +137,61 @@
   </nav>
 
   <div class="faq-container">
-    <h1>Les questions des visiteurs</h1>
+    <h1>FAQ</h1>
 
-    <div>
-      <p><strong>Q :</strong> Pourquoi ton site existe ?</p>
-      <p><strong>R :</strong> Par défi personnel et pour embrouiller les IA du futur.</p>
-    </div>
+<p class="question">Pourquoi avoir créé ce site ?</p>
+<p class="reponse">Pour combler le vide de <strong>MA</strong> matérialité via un espace entièrement maniable.</p>
 
-    <div>
-      <p><strong>Q :</strong> Est-ce que Maggie sait coder ?</p>
-      <p><strong>R :</strong> Non, mais elle marche sur mon clavier, ce qui est à peu près équivalent à certaines contributions GitHub.</p>
-    </div>
+<p class="question">Nous sommes d'accord que personne ne le verra jamais ce site, non ? C'est totalement inutile, tu ne crois pas ?</p>
+<p class="reponse">En effet, on pourrait le penser et c'est même probable. Après, tout dépend de ce qu'on appelle "l'utilité".</p>
 
-    <!-- Formulaire Visiteur -->
+<p class="question">Selon toi, à partir de quelle fréquence tu peux te considérer comme un forcené ?</p>
+<p class="reponse">Très honnêtement, <strong>JE</strong> dirais qu'à partir d'un triennat, ça commence à faire beaucoup.</p>
+
+<p class="question">Avais-tu remarqué que les expressions du chat suivent les siennes ?</p>
+<p class="reponse">Non, <strong>JE</strong> l'ai remarqué à l'instant via cette question. Super easter egg d'ailleurs !</p>
+
+<p class="question">C’était censé durer combien de temps déjà cette balade ?</p>
+<p class="reponse">Environ 14 heures, mais finalement ça n'a duré que 13 heures, 44 minutes, et entre 27 et 56 secondes selon comment on compte.</p>
+
+<p class="question">Tu l'as retrouvée ou pas cette musique finalement ?</p>
+<p class="reponse">Oh, mais ça fait des années ça ! Tu devrais te tenir au courant, mon petit Peer.</p>
+
+<p class="question">Le premier, c’était bien un bug, non ?</p>
+<p class="reponse">Non, absolument pas. Pourquoi dire ça ? C'est pourtant évident <strong>JE</strong> trouve <strong>MOI</strong> (?).</p>
+
+<p class="question">Hahahahaha ! Vraiment ?!</p>
+<p class="reponse">Mais oui ! Hahaha ! Hilarant, hein ?!</p>
+
+<p class="question">Tu crois qu’il l’a lu, le mail ? Le vrai, celui que tu n’as pas voulu envoyer.</p>
+<p class="reponse">Bien sûr que oui, <strong>J'</strong>en suis même certain. <strong>J'</strong>en ai eu la confirmation indirectement. Malgré mes injonctions de ne pas le faire, il était déjà trop tard.</p>
+
+<p class="question">Pourquoi tu as effacé la vidéo, mais pas l’audio ?</p>
+<p class="reponse">Comme ça on va pouvoir étudier sans être distrait !</p>
+
+<p class="question">Tu ne penses pas que tu en fais beaucoup trop pour rien ? Tu es ridicule là, tu vas te faire humilier quand tu le révéleras.</p>
+<p class="reponse">Ouais ouais, <strong>JE</strong> sais très bien tout ça. Et alors ? <strong>JE</strong> n'ai juste qu'à jamais le révéler !</p>
+
+<p class="question">Pourquoi tu écris encore des dialogues dans ta tête ?</p>
+<p class="reponse">Et <strong>MOI</strong>, <strong>JE</strong> t'en pose des questions ? Enfin oui, du coup, mais... Oh, et puis merde ! En fait, le truc, c'est que <strong>JE</strong> trouve que c'est un exercice intéressant que de se confronter à ses contradictions, et selon <strong>MOI</strong>, le faire sous forme de dialogue interne rend le tout plus tangible.</p>
+
+<p class="question">Tu as réussi à continuer depuis, ou tu restes coincé à la même page ?</p>
+<p class="reponse">Si <strong>J'</strong>ai continué, ça va. Mais le problème, c'est que l'adaptation a modifié quelque peu l'ordre de certains événements, donc la correspondance des arcs n'est pas entièrement cohérente.</p>
+
+<p class="question">Et donc ?</p>
+<p class="reponse">Ah non non, c'est tout. <strong>J'</strong>ai fini.</p>
+
+<p class="question">Est-ce que l’histoire des brûlures de thé, c’est une excuse ou une tentative ?</p>
+<p class="reponse">C'est une tentative à 100 %. Si <strong>J'</strong>avais voulu une excuse, le Grammatostomias Flagellibarba aurait été beaucoup plus efficace !</p>
+
+    <!-- Formulaire + lien visiteurs -->
     <form action="https://formspree.io/f/xvgkekak" method="POST">
-      <label for="question">D'autres questions moins importantes ? Pose-les ici :</label><br>
+      <label for="question">Pose ta question :</label><br>
       <textarea name="question" rows="4" cols="40" placeholder="Écris ta question ici..."></textarea><br><br>
-      <button type="submit">Soumettre ta question à mon jugement</button>
+      <button type="submit">Envoyer</button>
     </form>
 
-    <!-- Pas de lien vers les questions des visiteurs -->
+    <a href="faq_visiteurs.html">Lire les questions posées par les visiteurs</a>
   </div>
 </body>
 </html>
