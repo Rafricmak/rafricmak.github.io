@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <title>FAQ</title>
   <style>
-    body {
+    body {<div id="header"></div>
+<script>
+  fetch("header.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("header").innerHTML = html);
+</script>
+
       margin: 0;
       padding: 0;
       font-family: 'Courier New', monospace;
