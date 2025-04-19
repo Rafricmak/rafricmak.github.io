@@ -1,79 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <title>Bienvenue</title>
   <style>
-    body {<nav>
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li><a href="galerie.html">Galerie</a></li>
-  </ul>
-</nav>
-      background-color: #f4f4e4;
+    /* 1) Styles généraux et background */
+    body {
+      margin: 0;
+      padding: 50px 0;
+      text-align: center;
       font-family: 'Courier New', monospace;
       color: #222;
-      text-align: center;
-      padding-top: 50px;
+      background-image: url('https://i.imgur.com/7F6IqWL.jpeg'); /* ton URL ici */
+      /* background-size: cover;        // plein écran */
+      background-size: contain;        /* l’image garde sa taille d’origine */
+      background-repeat: no-repeat;
+      background-position: center top;
     }
-    .box {
-      border: 3px double #222;
-      background: #fff;
-      margin: auto;
-      padding: 40px;
-      max-width: 700px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+
+    /* 2) Menu de navigation */
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 0;
+      background-color: rgba(0, 0, 0, 0.8);
     }
-<style>nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 20px;
-  background-color: #222;
-  text-align: center;
-}
+    nav ul li {
+      display: inline-block;
+      margin: 0 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav ul li a:hover {
+      color: #ccc;
+    }
 
-nav ul li {
-  display: inline-block;
-  margin: 0 20px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  font-family: monospace;
-}
-
-nav ul li a:hover {
-  color: #ccc;
-}
-  body {
-    background-image: url(https://i.imgur.com/7F6IqWL.jpeg); /* Change ce lien par le tien */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    font-family: monospace;
-    margin: 0;
-    padding: 0;
-  }
-
-  .container {
-    background-color: rgba(255, 255, 255, 0.85);
-    padding: 40px;
-    border: 2px solid black;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    max-width: 800px;
-    margin: 100px auto;
-    text-align: center;
-  }
-</style>
+    /* 3) Zone de contenu (sans bordure ni fond blanc) */
+    .content {
+      max-width: 800px;
+      margin: 50px auto;
+      /* plus de border, plus de background-color */
+      /* tu pourras y mettre juste ton texte / tes images */
+    }
+  </style>
 </head>
 <body>
-  <div class="box">
+
+  <!-- Ton menu, placé AVANT le style du contenu -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+    </ul>
+  </nav>
+
+  <!-- Ta zone de texte, sans encadrement -->
+  <div class="content">
     <h1>Bienvenue sur le site de Rafricmak</h1>
     <p>Cette page ne sert à rien.</p>
-    <p>C'est cool j'ai un site !</p>
+    <p>C'est cool j'ai un site !</p>
   </div>
+
 </body>
 </html>
