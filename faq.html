@@ -10,7 +10,7 @@
       font-family: 'Courier New', monospace;
       color: #fff;
       background-color: #1a1a1a;
-      background-image: url('https://i.imgur.com/7F6IqWL.jpeg'); /* change le lien si tu veux */
+      background-image: url('https://i.imgur.com/7F6IqWL.jpeg'); /* ton image ici */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -40,22 +40,31 @@
     }
 
     .faq-container {
-      max-width: 800px;
-      margin: 100px auto;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
+      width: 80%; /* cadre moins large que la page */
+      margin: 0 auto;
+      padding: 40px 50px;
+      background-color: rgba(0, 0, 0, 0.6); /* fond translucide */
+      min-height: 100vh; /* couvre toute la hauteur */
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
     }
 
     .question {
-      text-align: right;
+      text-align: left;
       font-weight: bold;
-      margin-top: 30px;
+      margin-top: 40px;
+      font-size: 18px;
     }
 
     .reponse {
       text-align: left;
-      margin-left: 20px;
-      margin-top: 5px;
+      margin-left: 30px;
+      margin-top: 8px;
+      font-size: 16px;
     }
   </style>
 </head>
@@ -69,19 +78,19 @@
   </nav>
 
   <div class="faq-container">
-    <h1 style="text-align:center;">FAQ Absurde</h1>
+    <h1>FAQ Absurde</h1>
 
     <p class="question">Pourquoi suis-je la perfection ?</p>
-    <p class="reponse">Parce que l’univers a atteint son pic d’évolution avec moi, tout simplement.</p>
+    <p class="reponse">Parce que même les dieux sont jaloux de ta symétrie faciale et de ton sarcasme divin.</p>
 
-    <p class="question">Est-ce que les pigeons me jugent ?</p>
-    <p class="reponse">Oui. Surtout celui qui te regarde depuis le lampadaire. Il sait ce que tu as fait.</p>
+    <p class="question">Est-ce que les cornichons ont une conscience ?</p>
+    <p class="reponse">Oui. Ils hurlent intérieurement à chaque fois qu’on ouvre le pot.</p>
 
-    <p class="question">Si je me mange moi-même, est-ce que je deviens deux fois plus puissant ou je disparais ?</p>
-    <p class="reponse">Les scientifiques hésitent encore entre “trou noir instantané” et “transcendance dimensionnelle”.</p>
+    <p class="question">Pourquoi les chaussettes disparaissent dans la machine à laver ?</p>
+    <p class="reponse">Elles partent vivre leur vie loin de toi. Tu étais toxique.</p>
 
-    <p class="question">Peut-on respirer dans l’espace si on prend une grande inspiration avant ?</p>
-    <p class="reponse">Oui. Pendant environ 12 secondes. Puis tu exploses. Mais c’est poétique.</p>
+    <p class="question">Est-ce que mon chat me juge quand je parle seul ?</p>
+    <p class="reponse">Non. Il t’écoute et il prend des notes. Il rédige ton dossier psychiatrique en secret.</p>
   </div>
 </body>
 </html>
