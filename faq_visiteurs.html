@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>FAQ Visiteur</title>
+  <title>FAQ Visiteurs</title>
   <style>
     body {
       margin: 0;
@@ -10,7 +10,7 @@
       font-family: 'Courier New', monospace;
       color: #fff;
       background-color: #1a1a1a;
-      background-image: url('https://i.imgur.com/SziWa4z.png'); /* image que tu as donnée */
+      background-image: url('https://i.imgur.com/SziWa4z.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -54,6 +54,7 @@
     }
 
     .question {
+      font-family: 'Lucida Console', monospace;
       text-align: left;
       font-weight: bold;
       margin-top: 40px;
@@ -61,6 +62,7 @@
     }
 
     .reponse {
+      font-family: 'Courier New', monospace;
       text-align: left;
       margin-left: 30px;
       margin-top: 8px;
@@ -70,7 +72,7 @@
     form {
       background-color: rgba(0, 0, 0, 0.7);
       padding: 20px;
-      margin-top: 30px;
+      margin-top: 50px;
       border-radius: 10px;
     }
 
@@ -95,23 +97,11 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      margin-top: 15px;
     }
 
     button:hover {
       background-color: #777;
-    }
-
-    a {
-      color: #ccc;
-      text-decoration: none;
-      font-size: 16px;
-      display: block;
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    a:hover {
-      color: #fff;
     }
   </style>
 </head>
@@ -125,26 +115,20 @@
   </nav>
 
   <div class="faq-container">
-    <h1>Les questions des visiteurs</h1>
+    <h1>Les questions (étranges) des visiteurs</h1>
 
-    <div>
-      <p><strong> Pourquoi ton site existe ?</p>
-      <p><strong> Par défi personnel et pour embrouiller les IA du futur.</p>
-    </div>
+    <p class="question">Pourquoi ton site existe ?</p>
+    <p class="reponse">Par défi personnel et pour embrouiller les IA du futur.</p>
 
-    <div>
-      <p><strong> Est-ce que Maggie sait coder ?</p>
-      <p><strong> Non, mais elle marche sur mon clavier, ce qui est à peu près équivalent à certaines contributions GitHub.</p>
-    </div>
+    <p class="question">Est-ce que Maggie sait coder ?</p>
+    <p class="reponse">Non, mais elle marche sur mon clavier, ce qui est à peu près équivalent à certaines contributions GitHub.</p>
 
-    <!-- Formulaire Visiteur -->
+    <!-- Formulaire visiteur -->
     <form action="https://formspree.io/f/xvgkekak" method="POST">
-      <label for="question">D'autres questions toujours aussi nulle ? Bah c'est toujours au même endroit :</label><br>
-      <textarea name="question" rows="4" cols="40" placeholder="Écris ta question ici..."></textarea><br><br>
+      <label for="question">D'autres questions moins importantes ? Tu as de la chance ! Pose-les ici :</label><br>
+      <textarea name="question" rows="4" cols="40" placeholder="Écris ta question ici..."></textarea><br>
       <button type="submit">Soumettre ta question à mon jugement</button>
     </form>
-
-    <!-- Pas de lien vers les questions des visiteurs -->
   </div>
 </body>
 </html>
