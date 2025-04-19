@@ -3,24 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Bienvenue</title>
-  <!-- On charge maintenant style.css -->
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <nav>
-    <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="galerie.html">Galerie</a></li>
-    </ul>
-  </nav>
-
-  <div class="container">
-    <h1>Bienvenue sur le site de Rafricmak</h1>
-    <p>Cette page ne sert à rien.</p>
-    <p>C'est cool j'ai un site !</p>
-  </div>
-</body>
+  <style>
     body {
       margin: 0;
       padding: 50px 0;
@@ -28,14 +11,12 @@
       font-family: 'Courier New', monospace;
       color: #ffffff;
       background-color: #2f2f2f;
-      background-image: url(https://i.imgur.com/GydXeMw.jpeg); /* ton URL ici */
-      /* background-size: cover;        // plein écran */
-      background-size: 1500px auto; /* largeur 500px, hauteur auto */
+      background-image: url('https://i.imgur.com/GydXeMw.jpeg'); /* ton image ici */
+      background-size: 1500px auto;
       background-repeat: no-repeat;
       background-position: center top;
     }
 
-    /* 2) Menu de navigation */
     nav ul {
       list-style: none;
       margin: 0;
@@ -55,18 +36,13 @@
       color: #ccc;
     }
 
-    /* 3) Zone de contenu (sans bordure ni fond blanc) */
     .content {
       max-width: 800px;
       margin: 50px auto;
-      /* plus de border, plus de background-color */
-      /* tu pourras y mettre juste ton texte / tes images */
     }
   </style>
 </head>
 <body>
-
-  <!-- Ton menu, placé AVANT le style du contenu -->
   <nav>
     <ul>
       <li><a href="index.html">Accueil</a></li>
@@ -75,12 +51,10 @@
     </ul>
   </nav>
 
-  <!-- Ta zone de texte, sans encadrement -->
   <div class="content">
     <h1>Bienvenue sur le site de Rafricmak</h1>
-    <p>Cette page ne sert à rien. Tout comme notre misérable existance.</p>
+    <p>Cette page ne sert à rien. Tout comme notre misérable existence.</p>
     <p>Mais j'ai un site ! C'est cool hein ?</p>
   </div>
-
 </body>
 </html>
