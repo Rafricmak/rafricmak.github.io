@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rafricmak's Absurd Net</title>
+  <style>
+    body {
+      background-color: #c0d6e4;
+      font-family: "Courier New", monospace;
+      color: #000033;
+      text-align: center;
+    }
+    .container {
+      padding: 40px;
+      border: 3px double #003366;
+      margin: 50px auto;
+      max-width: 700px;
+      background: #f0f0ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenue sur le site de Rafricmak</h1>
+    <p>Cliquez pas partout, on sait jamais ce qui peut se passer.</p>
+  </div>
+</body>
+</html>
