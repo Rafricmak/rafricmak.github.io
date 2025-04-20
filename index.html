@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      padding-top: 60px;
+      padding: 0;
       font-family: 'Courier New', monospace;
       color: #ffffff;
       background-color: #2f2f2f;
@@ -16,19 +16,32 @@
       background-repeat: no-repeat;
       background-position: center top;
       text-align: center;
+      overflow: hidden;
+    }
+
+    .wrapper {
+      padding-top: 60px; /* pour le bandeau */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 60px); /* pour que tout rentre sans scroll, sans cacher le haut */
     }
 
     .content {
       max-width: 1000px;
-      margin: 80px auto;
+      width: 100%;
+    }
+
+    h1, p, h2 {
+      margin: 10px 0;
     }
 
     .section-options {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 60px 40px;
+      gap: 40px 40px;
       justify-items: center;
-      margin-top: 60px;
+      margin-top: 30px;
     }
 
     .option-block {
@@ -52,7 +65,6 @@
 <body>
   <!-- HEADER -->
   <div id="header"></div>
-
   <script>
     fetch("header.html")
       .then(res => res.text())
@@ -65,44 +77,46 @@
   </script>
 
   <!-- CONTENU -->
-  <div class="content">
-    <h1>Bienvenue sur le site de Rafricmak</h1>
-    <p>Cette page ne sert à rien. Tout comme notre misérable existence.</p>
-    <p>Mais j'ai un site ! C'est cool hein ?</p>
-    <h2>Alors, vous voulez faire quoi ?</h2>
+  <div class="wrapper">
+    <div class="content">
+      <h1>Bienvenue sur le site de Rafricmak</h1>
+      <p>Cette page ne sert à rien. Tout comme notre misérable existence.</p>
+      <p>Mais j'ai un site ! C'est cool hein ?</p>
+      <h2>Alors, vous voulez faire quoi ?</h2>
 
-    <div class="section-options">
+      <div class="section-options">
 
-      <div class="option-block">
-        <p>Vous en avez marre d'avoir une vie aussi merdique ?<br>
-        Les réponses sont ici ! Et si jamais il en manque, demandez moi !</p>
-        <a href="faq.html">
-          <img src="https://i.gifer.com/72gi.gif" alt="FAQ">
-        </a>
+        <div class="option-block">
+          <p>Vous en avez marre d'avoir une vie aussi merdique ?<br>
+          Les réponses sont ici ! Et si jamais il en manque, demandez moi !</p>
+          <a href="faq.html">
+            <img src="https://i.gifer.com/72gi.gif" alt="FAQ">
+          </a>
+        </div>
+
+        <div class="option-block">
+          <p>Vous souhaitez observer la magnificence du monde ?<br>
+          Alors c'est ici ! Hein comment ça la mienne ? Oh vous me gênez là !<br>(mais ça reste ici)</p>
+          <a href="galerie.html">
+            <img src="https://i.gifer.com/5FBi.gif" alt="Galerie">
+          </a>
+        </div>
+
+        <div class="option-block">
+          <p>Venez clubber un max !<br>Le fun est à votre portée !</p>
+          <a href="logs.html">
+            <img src="https://i.gifer.com/Dtk.gif" alt="Logs">
+          </a>
+        </div>
+
+        <div class="option-block">
+          <p>En travaux pour l'instant désolé !</p>
+          <a href="page_mystere.html">
+            <img src="https://i.gifer.com/3IsP.gif" alt="À venir">
+          </a>
+        </div>
+
       </div>
-
-      <div class="option-block">
-        <p>Vous souhaitez observer la magnificence du monde ?<br>
-        Alors c'est ici ! Hein comment ça la mienne ? Oh vous me gênez là !<br>(mais ça reste ici)</p>
-        <a href="galerie.html">
-          <img src="https://i.gifer.com/5FBi.gif" alt="Galerie">
-        </a>
-      </div>
-
-      <div class="option-block">
-        <p>Venez clubber un max !<br>Le fun est à votre portée !</p>
-        <a href="logs.html">
-          <img src="https://i.gifer.com/Dtk.gif" alt="Logs">
-        </a>
-      </div>
-
-      <div class="option-block">
-        <p>En travaux pour l'instant désolé !</p>
-        <a href="page_mystere.html">
-          <img src="https://i.gifer.com/3IsP.gif" alt="À venir">
-        </a>
-      </div>
-
     </div>
   </div>
 </body>
