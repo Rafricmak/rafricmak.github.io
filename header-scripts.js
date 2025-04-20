@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const sides = ["pub-left", "pub-right"];
 
-  const numPubs = Math.floor(Math.random() * 5) + 2; // entre 2 et 6 pubs
+  const numPubs = Math.floor(Math.random() * (15 - 6 + 1)) + 6;
   const shuffledPubs = pubs.sort(() => 0.5 - Math.random()).slice(0, numPubs);
 
   shuffledPubs.forEach((pub, index) => {
