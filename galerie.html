@@ -15,15 +15,25 @@
       position: relative;
     }
 
+    .section {
+      max-width: 1000px;
+      margin: 100px auto;
+      padding: 20px;
+      background-color: rgba(0,0,0,0.6);
+      border-radius: 10px;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
     .galerie {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 35px;
-      max-width: 1000px;
-      margin: 80px auto;
-      position: relative;
-      z-index: 10;
     }
 
     .galerie img {
@@ -38,25 +48,45 @@
       transform: scale(1.05);
     }
 
+    /* Zoom + Texte */
     #zoom {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(0,0,0,0.9);
+      background-color: rgba(0,0,0,0.95);
       display: none;
       justify-content: center;
       align-items: center;
+      padding: 40px;
+      box-sizing: border-box;
       z-index: 9999;
     }
 
-    #zoom img {
+    #zoom-content {
+      display: flex;
+      gap: 60px;
       max-width: 90%;
       max-height: 90%;
+    }
+
+    #zoom img {
+      max-height: 80vh;
       border: 5px solid white;
     }
 
+    #zoom-text {
+      max-height: 80vh;
+      overflow-y: auto;
+      color: #ccc;
+      font-size: 16px;
+      width: 300px;
+      font-family: 'Courier New', monospace;
+      text-align: left;
+    }
+
+    /* Étoiles */
     .star {
       position: absolute;
       width: 100px;
@@ -68,71 +98,56 @@
 </head>
 <body>
 
-  <!-- MENU ET MUSIQUE (chargés dynamiquement) -->
- <div id="header"></div>
-
-<script>
-  fetch("header.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("header").innerHTML = html;
-      const script = document.createElement('script');
-      script.src = "header-scripts.js";
-      document.body.appendChild(script);
-    });
-</script>
-
-  <!-- G A L E R I E -->
-  <div class="galerie">
-    <img src="https://i.imgur.com/Ch6rRtz.jpeg" title="Ce n’est pas ce que vous croyez.">
-    <img src="https://i.imgur.com/MTQIxan.jpeg" title="La vie avant le bug.">
-    <img src="https://i.imgur.com/9SVU2Dx.jpeg" title="Encore un souvenir impossible.">
-  </div>
-
-  <!-- ZOOM -->
-  <div id="zoom" onclick="this.style.display='none'">
-    <img src="" id="zoom-img">
-  </div>
-
-  <!-- ÉTOILES -->
+  <!-- MENU ET MUSIQUE -->
+  <div id="header"></div>
   <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("header").innerHTML = html;
+        const script = document.createElement('script');
+        script.src = "header-scripts.js";
+        document.body.appendChild(script);
+      });
+  </script>
+
+  <!-- SECTION 1 : Anciennes PPs -->
+  <div class="section">
+    <h2>Anciennes images de profil</h2>
+    <div class="galerie">
+      <img src="https://i.imgur.com/Ch6rRtz.jpeg" data-text="C’est pas ce que vous croyez.">
+      <img src="https://i.imgur.com/MTQIxan.jpeg" data-text="La vie avant le bug.">
+      <img src="https://i.imgur.com/9SVU2Dx.jpeg" data-text="Encore un souvenir impossible.">
+    </div>
+  </div>
+
+  <!-- SECTION 2 : Tableaux de maman -->
+  <div class="section">
+    <h2>Tableaux de ma mère</h2>
+    <div class="galerie">
+      <img src="https://i.imgur.com/3BXTNRk.jpeg" data-text="Elle l’a peint quand j'avais 8 ans.">
+      <img src="https://i.imgur.com/dJkzO8N.jpeg" data-text="Picasso ? Non. Maman.">
+    </div>
+  </div>
+
+  <!-- ZOOM AVEC TEXTE -->
+  <div id="zoom" onclick="this.style.display='none'">
+    <div id="zoom-content">
+      <img src="" id="zoom-img">
+      <div id="zoom-text"></div>
+    </div>
+  </div>
+
+  <!-- ÉTOILES + ZOOM JS -->
+  <script>
+    // étoiles
     const starUrls = [
       "https://i.gifer.com/origin/98/98767abf1efb9ba7b1155e27879fc851_w200.webp",
       "https://i.gifer.com/origin/23/238a465012f48c55b9c96c351be7eadd_w200.webp",
       "https://i.gifer.com/origin/ec/ecb0ad2af16787952d6868fb25db6e9d_w200.webp",
       "https://i.gifer.com/origin/61/61ecadae76f23a6860db8d78de93c322_w200.webp",
-      "https://i.gifer.com/origin/92/9201ca103be3621c2b032f2151ff210e_w200.webp",
-      "https://i.gifer.com/origin/11/1153eae92f6e5f8831b0fb4ed9f2fcc2_w200.webp",
-      "https://cdn.pixabay.com/animation/2023/10/02/18/06/18-06-24-613_512.gif",
-      "https://cdn.pixabay.com/animation/2023/04/20/06/45/06-45-08-258_512.gif",
-      "https://cdn.pixabay.com/animation/2023/05/02/11/25/11-25-53-171_512.gif",
-      "https://cdn.pixabay.com/animation/2025/01/26/14/27/14-27-58-593_512.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0038.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0002.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0001.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0050.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0061.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0103.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0005.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0007.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0011.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0012.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0014.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0009.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0029.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0036.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0037.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0052.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0053.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0063.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0072.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0104.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0127.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0143.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0151.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0161.gif"
+      "https://i.gifer.com/origin/92/9201ca103be3621c2b032f2151ff210e_w200.webp"
     ];
-
     for (let i = 0; i < 100; i++) {
       const star = document.createElement("img");
       const url = starUrls[Math.floor(Math.random() * starUrls.length)];
@@ -143,17 +158,21 @@
       document.body.appendChild(star);
     }
 
-    // ZOOM IMAGE
+    // ZOOM avec texte
     const images = document.querySelectorAll('.galerie img');
     const zoomBox = document.getElementById('zoom');
     const zoomImg = document.getElementById('zoom-img');
+    const zoomText = document.getElementById('zoom-text');
 
     images.forEach(img => {
-      img.addEventListener('click', () => {
+      img.addEventListener('click', e => {
+        e.stopPropagation();
         zoomImg.src = img.src;
+        zoomText.textContent = img.dataset.text || "Aucun commentaire.";
         zoomBox.style.display = 'flex';
       });
     });
   </script>
+
 </body>
 </html>
