@@ -37,8 +37,8 @@ function copyMail() {
     { class: "pub-bottom", top: "90%" }
   ];
 
-  const numPubs = Math.min(5, pubs.length);
-  const shuffledPubs = pubs.sort(() => 0.5 - Math.random()).slice(0, numPubs);
+  const numPubs = Math.min(9, pubs.length);
+  const shuffledPubs = pubs.sort(() => 0.9 - Math.random()).slice(0, numPubs);
 
   shuffledPubs.forEach((pub, index) => {
     const position = positions[index % positions.length];
