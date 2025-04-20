@@ -87,20 +87,20 @@
 <body>
   <a href="index.html" class="back-arrow">&#8592;</a>
 
-<div class="console-container">
+  <div class="console-container">
     <div id="console">
-        <div>Bienvenue dans le terminal de Rafricmak.</div>
-        <div>Liste des fichiers disponibles :</div>
-        <div>- sextape.mp4</div>
-        <div>- bonne_journée.mp3</div>
-        <div>- opinions.jpeg</div>
-        <div>- weeb_edition_2023.png</div>
-        <div>- weeb_esprit_critique.png</div>
-        <div>- Troll.jepg</div>
-        <div>- chat_dynamisant.jepg</div>
-        <div>- chat_reposant.png</div>
-        <div>- rien_de_cacophonique</div>
-        <div>- histoire_pas_ouf.pdf</div>
+      <div>Bienvenue dans le terminal de Rafricmak.</div>
+      <div>Liste des fichiers disponibles :</div>
+      <div>- sextape.mp4</div>
+      <div>- bonne_journée.mp3</div>
+      <div>- opinions.jpeg</div>
+      <div>- weeb_edition_2023.png</div>
+      <div>- weeb_esprit_critique.png</div>
+      <div>- Troll.jpeg</div>
+      <div>- chat_dynamisant.jpeg</div>
+      <div>- chat_reposant.png</div>
+      <div>- rien_de_cacophonique</div>
+      <div>- histoire_pas_ouf.pdf</div>
     </div>
 
     <div id="input-line">
@@ -111,26 +111,25 @@
 
   <script>
     const logs = {
-      "sextape.mp4": "https://www.dropbox.com/scl/fi/o8m98632t25jtrv9et54p/Rick-Astley-Never-Gonna-Give-You-Up-Official-Music-Video.mp4?rlkey=sfncfiilqt0bddn3jvleram9b&amp;st=8zi64lum&amp;raw=1",
-      "bonne_journée.mp3": "https://www.dropbox.com/scl/fi/iyr4dpwydq4l9purrm06e/rain-a.mp3?rlkey=bdsnvknaoxwqsetvq5aq4t7p6&amp;st=qykabhud&amp;raw=1",
+      "sextape.mp4": "https://www.dropbox.com/scl/fi/o8m98632t25jtrv9et54p/Rick-Astley-Never-Gonna-Give-You-Up-Official-Music-Video.mp4?rlkey=sfncfiilqt0bddn3jvleram9b&st=8zi64lum&raw=1",
+      "bonne_journée.mp3": "https://www.dropbox.com/scl/fi/iyr4dpwydq4l9purrm06e/rain-a.mp3?rlkey=bdsnvknaoxwqsetvq5aq4t7p6&st=qykabhud&raw=1",
       "opinions.jpeg": "https://i.imgur.com/ajHPC5X.png",
       "weeb_edition_2023.png": "https://i.imgur.com/wacXeBr.png",
       "weeb_esprit_critique.png": "https://i.imgur.com/3epgwvN.png",
-      "Troll.jepg": "https://i.imgur.com/ty2FOf0.jpeg",
-      "chat_dynamisant.jepg": "https://i.imgur.com/ST9BpFR.jpeg",
+      "Troll.jpeg": "https://i.imgur.com/ty2FOf0.jpeg",
+      "chat_dynamisant.jpeg": "https://i.imgur.com/ST9BpFR.jpeg",
       "chat_reposant.png": "https://i.imgur.com/d8w0U4J.jpeg",
-      "rien_de_cacophonique": "https://youtube.com/playlist?list=PLuonf0zETMT692stRT9mWzStWQEZsOf9z&si=YIojjROgbx6WNczq",
-      "histoire_pas_ouf.pdf": "https://www.dropbox.com/scl/fi/uei4bahhwogyq811nmbbl/La-maladie-des-cauchemars.pdf?rlkey=riaajded9ewqkhqtkuungixa4&raw=1" 
+      "rien_de_cacophonique": "https://www.youtube.com/embed/videoseries?list=PLuonf0zETMT692stRT9mWzStWQEZsOf9z",
+      "histoire_pas_ouf.pdf": "https://www.dropbox.com/scl/fi/uei4bahhwogyq811nmbbl/La-maladie-des-cauchemars.pdf?rlkey=riaajded9ewqkhqtkuungixa4&raw=1"
     };
 
     const commandInput = document.getElementById("command");
     const consoleOutput = document.getElementById("console");
 
-    // Interdire copier/coller
-    commandInput.addEventListener("paste", e => e.preventDefault());
-    commandInput.addEventListener("copy", e => e.preventDefault());
-    commandInput.addEventListener("cut", e => e.preventDefault());
-    commandInput.addEventListener("contextmenu", e => e.preventDefault());
+    // Bloquer copier-coller
+    ["paste", "copy", "cut", "contextmenu"].forEach(event =>
+      commandInput.addEventListener(event, e => e.preventDefault())
+    );
 
     commandInput.addEventListener("keydown", function(e) {
       if (e.key === "Enter") {
@@ -188,7 +187,6 @@
               msg.textContent = "Fichier reconnu mais type inconnu.";
               consoleOutput.appendChild(msg);
             }
-
           } else {
             const errorLine = document.createElement("div");
             errorLine.textContent = "Fichier introuvable.";
