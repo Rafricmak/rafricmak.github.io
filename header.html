@@ -1,4 +1,5 @@
 <nav>
+  <!-- Votre navigation existante -->
   <ul class="nav-links">
     <li><a href="index.html">Accueil</a></li>
     <li><a href="faq.html">FAQ</a></li>
@@ -22,16 +23,35 @@
       <span class="profile-name">Rafricmak</span>
     </div>
   </div>
-
-  <!-- LECTEUR MINIMALISTE (Fonctionne vraiment) -->
-  <div style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; width: 300px;">
-    <audio controls autoplay loop style="width: 100%;">
-      <source src="https://www.dropbox.com/scl/fi/ys9jb33tvz8k7xpsng58i/50smedly.mp3?rlkey=p0if89ncsc3tgh3flwisn0lgv&raw=1" type="audio/mpeg">
-      Votre navigateur ne supporte pas le lecteur audio.
-    </audio>
-  </div>
 </nav>
 
+<!-- LECTEUR SCM CORRECTEMENT INTÉGRÉ -->
+<div id="scm-player" style="position:fixed; top:60px; left:0; width:300px; z-index:999"></div>
+<script>
+  window.onload = function() {
+    const scmScript = document.createElement('script');
+    scmScript.src = 'https://www.scmplayer.net/script.js';
+    scmScript.setAttribute('data-config', JSON.stringify({
+      'skin': 'https://static.tumblr.com/su8juwr/qNKmnc3jh/simplesdesenho.css',
+      'volume': 30,
+      'autoplay': true,
+      'shuffle': false,
+      'repeat': 1,
+      'placement': 'top-left',
+      'showplaylist': false,
+      'playlist': [
+        {'title':'50sMeldy.midi', 'url':'https://www.dropbox.com/scl/fi/ys9jb33tvz8k7xpsng58i/50smedly.mp3?rlkey=p0if89ncsc3tgh3flwisn0lgv&raw=1'},
+        {'title':'lisboa.mp3', 'url':'https://www.dropbox.com/scl/fi/goa79f46tq9r19pyudpf0/_lisboa.mp3?rlkey=7vhoes7i2efohmuowrq4mfdie&raw=1'},
+        {'title':'raina.midi', 'url':'https://www.dropbox.com/scl/fi/iyr4dpwydq4l9purrm06e/raina.mp3?rlkey=bdsnvknaoxwqsetvq5aq4t7p6&raw=1'},
+        {'title':'morning7.mp3', 'url':'https://www.dropbox.com/scl/fi/x12r9tpxeqrpaq1lvu4cf/morning07.mp3?rlkey=srcwsyi0rz3ag6uyxbcaoh44x&raw=1'},
+        {'title':'5oclock.midi', 'url':'https://www.dropbox.com/scl/fi/5wcr07zphm8333v5x8jv4/5oclock.mp3?rlkey=lao7xbag3ke9adhrc6770cznf&raw=1'}
+      ]
+    }));
+    document.getElementById('scm-player').appendChild(scmScript);
+  };
+</script>
+
+<!-- STYLE EXISTANT (ne pas toucher) -->
 <style>
   nav {
     position: fixed;
