@@ -111,7 +111,10 @@
 
   <script>
     const logs = {
-      "sextape.mp4": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "sextape.mp4": {
+        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        external: true
+      },
       "bonne_journée.mp3": "https://www.dropbox.com/scl/fi/iyr4dpwydq4l9purrm06e/rain-a.mp3?rlkey=bdsnvknaoxwqsetvq5aq4t7p6&raw=1",
       "opinions.jpeg": "https://i.imgur.com/ajHPC5X.png",
       "weeb_edition_2023.png": "https://i.imgur.com/wacXeBr.png",
@@ -146,50 +149,62 @@
           consoleOutput.appendChild(userCommand);
 
           if (logs[value]) {
-            const url = logs[value];
-            const ext = value.split('.').pop().toLowerCase();
-
-            if (ext === "txt") {
-              fetch(url)
-                .then(res => res.text())
-                .then(text => {
-                  const textBlock = document.createElement("div");
-                  textBlock.className = "output-line";
-                  textBlock.textContent = text;
-                  consoleOutput.appendChild(textBlock);
-                  scrollToBottom();
-                });
-            } else if (["jpeg", "jpg", "png", "gif", "webp"].includes(ext)) {
-              const img = document.createElement("img");
-              img.src = url;
-              img.className = "displayed-image";
-              consoleOutput.appendChild(img);
-              scrollToBottom();
-            } else if (ext === "mp3") {
-              const audio = document.createElement("audio");
-              audio.controls = true;
-              audio.src = url;
-              audio.autoplay = true;
-              consoleOutput.appendChild(audio);
-              scrollToBottom();
-            } else if (ext === "mp4") {
-              const video = document.createElement("video");
-              video.controls = true;
-              video.src = url;
-              video.autoplay = true;
-              video.style.maxHeight = "400px";
-              consoleOutput.appendChild(video);
-              scrollToBottom();
-            } else if (ext === "pdf") {
-              const iframe = document.createElement("iframe");
-              iframe.src = url;
-              iframe.width = "100%";
-              iframe.height = "600px";
-              consoleOutput.appendChild(iframe);
-              scrollToBottom();
+            const logEntry = logs[value];
+            let url, isExternal;
+            
+            if (typeof logEntry === 'object' && logEntry.external) {
+              url = logEntry.url;
+              isExternal = true;
             } else {
-              // Tout ce qui est externe (genre lien YouTube)
+              url = logEntry;
+              const ext = value.split('.').pop().toLowerCase();
+              isExternal = ["ytb"].includes(ext);
+            }
+
+            if (isExternal) {
               window.open(url, "_blank");
+            } else {
+              const ext = value.split('.').pop().toLowerCase();
+
+              if (ext === "txt") {
+                fetch(url)
+                  .then(res => res.text())
+                  .then(text => {
+                    const textBlock = document.createElement("div");
+                    textBlock.className = "output-line";
+                    textBlock.textContent = text;
+                    consoleOutput.appendChild(textBlock);
+                    scrollToBottom();
+                  });
+              } else if (["jpeg", "jpg", "png", "gif", "webp"].includes(ext)) {
+                const img = document.createElement("img");
+                img.src = url;
+                img.className = "displayed-image";
+                consoleOutput.appendChild(img);
+                scrollToBottom();
+              } else if (ext === "mp3") {
+                const audio = document.createElement("audio");
+                audio.controls = true;
+                audio.src = url;
+                audio.autoplay = true;
+                consoleOutput.appendChild(audio);
+                scrollToBottom();
+              } else if (ext === "mp4") {
+                const video = document.createElement("video");
+                video.controls = true;
+                video.src = url;
+                video.autoplay = true;
+                video.style.maxHeight = "400px";
+                consoleOutput.appendChild(video);
+                scrollToBottom();
+              } else if (ext === "pdf") {
+                const iframe = document.createElement("iframe");
+                iframe.src = url;
+                iframe.width = "100%";
+                iframe.height = "600px";
+                consoleOutput.appendChild(iframe);
+                scrollToBottom();
+              }
             }
 
           } else {
