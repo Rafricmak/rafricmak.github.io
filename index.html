@@ -22,29 +22,95 @@
       max-width: 800px;
       margin: 80px auto;
     }
+
+    .section-options {
+      margin-top: 80px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      padding-bottom: 100px;
+    }
+
+    .option-block {
+      max-width: 260px;
+      text-align: center;
+    }
+
+    .option-block p {
+      font-size: 14px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .option-block img {
+      width: 100%;
+      border: 2px solid white;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .option-block img:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 
 <body>
   <!-- HEADER -->
-<div id="header"></div>
+  <div id="header"></div>
 
-<script>
-  fetch("header.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("header").innerHTML = html;
-      const script = document.createElement('script');
-      script.src = "header-scripts.js";
-      document.body.appendChild(script);
-    });
-</script>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("header").innerHTML = html;
+        const script = document.createElement('script');
+        script.src = "header-scripts.js";
+        document.body.appendChild(script);
+      });
+  </script>
 
   <!-- CONTENU -->
   <div class="content">
     <h1>Bienvenue sur le site de Rafricmak</h1>
     <p>Cette page ne sert à rien. Tout comme notre misérable existence.</p>
     <p>Mais j'ai un site ! C'est cool hein ?</p>
+    <h2>Alors, vous voulez faire quoi ?</h2>
+  </div>
+
+  <!-- OPTIONS CLIQUABLES -->
+  <div class="section-options">
+
+    <div class="option-block">
+      <p>Vous en avez marre d'avoir une vie aussi merdique ?<br>Les réponses sont ici ! Et si jamais il en manque, demandez moi !</p>
+      <a href="faq.html">
+        <img src="https://i.gifer.com/72gi.gif" alt="FAQ">
+      </a>
+    </div>
+
+    <div class="option-block">
+      <p>Vous souhaitez observer la magnificence du monde ?<br>Alors c'est ici ! Hein comment ça la mienne ? Oh vous me gênez là !<br>(mais ça reste ici)</p>
+      <a href="galerie.html">
+        <img src="https://i.gifer.com/WUUT.gif" alt="Galerie">
+      </a>
+    </div>
+
+    <div class="option-block">
+      <p>Venez clubber un max !<br>Le fun est à votre portée !</p>
+      <a href="logs.html">
+        <img src="https://i.gifer.com/Dtk.gif" alt="Logs">
+      </a>
+    </div>
+
+    <div class="option-block">
+      <p>En travaux pour l'instant désolé !</p>
+      <a href="page_mystere.html">
+        <img src="https://i.gifer.com/3IsP.gif" alt="À venir">
+      </a>
+    </div>
+
   </div>
 </body>
 </html>
