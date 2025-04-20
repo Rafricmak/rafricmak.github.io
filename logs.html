@@ -73,6 +73,12 @@
       max-width: 90%;
     }
 
+    iframe {
+      margin-top: 10px;
+      border: none;
+      max-width: 100%;
+    }
+
     .output-line {
       margin-top: 6px;
     }
@@ -89,6 +95,8 @@
       <div>- audio_corrompu.mp3</div>
       <div>- photo_03.jpeg</div>
       <div>- vidéo_sans_titre.mp4</div>
+      <div>- playlist_yt</div>
+      <div>- mon_histoire.pdf</div>
     </div>
 
     <div id="input-line">
@@ -99,10 +107,16 @@
 
   <script>
     const logs = {
-      "rapport_avril.txt": "https://raw.githubusercontent.com/jo-sr/test-files/main/rapport_avril.txt",
-      "audio_corrompu.mp3": "https://www.dropbox.com/scl/fi/goa79f46tq9r19pyudpf0/_lisboa.mp3?rlkey=7vhoes7i2efohmuowrq4mfdie&raw=1",
-      "photo_03.jpeg": "https://i.imgur.com/0znBhiC.jpeg",
-      "vidéo_sans_titre.mp4": "https://www.dropbox.com/scl/fi/x12r9tpxeqrpaq1lvu4cf/morning07.mp3?rlkey=srcwsyi0rz3ag6uyxbcaoh44x&raw=1"
+      "sextape.mp4": "https://www.dropbox.com/scl/fi/o8m98632t25jtrv9et54p/Rick-Astley-Never-Gonna-Give-You-Up-Official-Music-Video.mp4?rlkey=sfncfiilqt0bddn3jvleram9b&amp;st=8zi64lum&amp;raw=1",
+      "bonne_journée.mp3": "https://www.dropbox.com/scl/fi/iyr4dpwydq4l9purrm06e/rain-a.mp3?rlkey=bdsnvknaoxwqsetvq5aq4t7p6&amp;st=qykabhud&amp;raw=1",
+      "opinions.jpeg": "https://i.imgur.com/ajHPC5X.png",
+      "weeb_edition_2023.png": "https://i.imgur.com/wacXeBr.png",
+      "weeb_esprit_critique.png": "https://i.imgur.com/3epgwvN.png",
+      "Troll.jepg": "https://i.imgur.com/ty2FOf0.jpeg",
+      "chat_dynamisant.jepg": "https://i.imgur.com/ST9BpFR.jpeg",
+      "chat_reposant.png": "https://i.imgur.com/d8w0U4J.jpeg",
+      "rien_de_cacophonique": "https://youtube.com/playlist?list=PLuonf0zETMT692stRT9mWzStWQEZsOf9z&si=YIojjROgbx6WNczq",
+      "histoire_pas_ouf.pdf": "https://www.dropbox.com/scl/fi/uei4bahhwogyq811nmbbl/La-maladie-des-cauchemars.pdf?rlkey=riaajded9ewqkhqtkuungixa4&raw=1" 
     };
 
     const commandInput = document.getElementById("command");
@@ -151,6 +165,20 @@
               video.src = url;
               video.style.maxHeight = "400px";
               consoleOutput.appendChild(video);
+            } else if (extension === "pdf") {
+              const iframe = document.createElement("iframe");
+              iframe.src = url;
+              iframe.width = "100%";
+              iframe.height = "600px";
+              consoleOutput.appendChild(iframe);
+            } else if (url.includes("youtube.com/embed/videoseries")) {
+              const iframe = document.createElement("iframe");
+              iframe.src = url;
+              iframe.width = "100%";
+              iframe.height = "400px";
+              iframe.allow = "autoplay; encrypted-media";
+              iframe.allowFullscreen = true;
+              consoleOutput.appendChild(iframe);
             } else {
               const msg = document.createElement("div");
               msg.textContent = "Fichier reconnu mais type inconnu.";
