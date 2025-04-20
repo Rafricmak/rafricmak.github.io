@@ -128,3 +128,18 @@
     animation: blink 1.5s infinite;
   }
 </style>
+
+<!-- MUSIQUE DE FOND -->
+<audio id="background-music" autoplay loop>
+  <source src="https://www.dl.dropboxusercontent.com/scl/fi/ys9jb33tvz8k7xpsng58i/50smedly.mp3?rlkey=p0if89ncsc3tgh3flwisn0lgv" type="audio/mpeg">
+  Ton navigateur ne supporte pas l’audio HTML5.
+</audio>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const music = document.getElementById("background-music");
+    if (music) {
+      music.volume = 0.3;
+    }
+  });
+</script>
