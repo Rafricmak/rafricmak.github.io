@@ -9,38 +9,37 @@
       margin: 0;
       padding: 0;
       height: 100%;
+      overflow: hidden;
       font-family: 'Courier New', monospace;
       color: #ffffff;
-      overflow: hidden;
     }
 
-    /* Fond étoilé (gif en boucle) */
-    body::before {
-      content: "";
+    /* ÉTOILES EN FOND */
+    #background-stars {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background: url('https://i.gifer.com/CTM.gif') center center / cover no-repeat;
-      z-index: -2;
+      z-index: -3;
     }
 
-    /* Image centrale au-dessus des étoiles, mais sous le contenu */
-    body::after {
-      content: "";
+    /* IMAGE CENTRALE FIXÉE */
+    #background-main {
       position: fixed;
       top: 0;
       left: 50%;
       transform: translateX(-50%);
       width: 1300px;
-      height: auto;
+      height: 100%;
       background: url('https://i.gifer.com/3Hvu.gif') top center no-repeat;
       background-size: 1300px auto;
-      z-index: -1;
-      pointer-events: none; /* Pour pas bloquer les clics */
+      z-index: -2;
+      pointer-events: none;
     }
 
+    /* CONTENU */
     .wrapper {
       padding-top: 60px;
       display: flex;
@@ -48,6 +47,8 @@
       align-items: center;
       height: calc(100vh - 60px);
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .content {
@@ -86,6 +87,12 @@
 </head>
 
 <body>
+  <!-- FOND ÉTOILES -->
+  <div id="background-stars"></div>
+
+  <!-- IMAGE CENTRALE -->
+  <div id="background-main"></div>
+
   <!-- HEADER -->
   <div id="header"></div>
   <script>
@@ -108,7 +115,6 @@
       <h2>Alors, vous voulez faire quoi ?</h2>
 
       <div class="section-options">
-
         <div class="option-block">
           <p>Vous en avez marre d'avoir une vie aussi merdique ?<br>
           Les réponses sont ici ! Et si jamais il en manque, demandez moi !</p>
@@ -138,7 +144,6 @@
             <img src="https://i.gifer.com/3IsP.gif" alt="À venir">
           </a>
         </div>
-
       </div>
     </div>
   </div>
