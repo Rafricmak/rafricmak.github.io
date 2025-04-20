@@ -82,6 +82,13 @@
     .output-line {
       margin-top: 6px;
     }
+
+    .link-out {
+      margin-top: 10px;
+      display: inline-block;
+      color: #0af;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -109,122 +116,107 @@
     </div>
   </div>
 
-<script>
-  const logs = {
-    "sextape.mp4": "https://www.dropbox.com/scl/fi/o8m98632t25jtrv9et54p/Rick-Astley-Never-Gonna-Give-You-Up-Official-Music-Video.mp4?rlkey=sfncfiilqt0bddn3jvleram9b&st=8zi64lum&raw=1",
-    "bonne_journée.mp3": "https://www.dropbox.com/scl/fi/iyr4dpwydq4l9purrm06e/rain-a.mp3?rlkey=bdsnvknaoxwqsetvq5aq4t7p6&st=qykabhud&raw=1",
-    "opinions.jpeg": "https://i.imgur.com/ajHPC5X.png",
-    "weeb_edition_2023.png": "https://i.imgur.com/wacXeBr.png",
-    "weeb_esprit_critique.png": "https://i.imgur.com/3epgwvN.png",
-    "troll.jpeg": "https://i.imgur.com/ty2FOf0.jpeg",
-    "chat_dynamisant.jpeg": "https://i.imgur.com/ST9BpFR.jpeg",
-    "chat_reposant.png": "https://i.imgur.com/d8w0U4J.jpeg",
-    "rien_de_cacophonique": "https://www.youtube.com/playlist?list=PLuonf0zETMT692stRT9mWzStWQEZsOf9z",
-    "histoire_pas_ouf.pdf": "https://www.dropbox.com/scl/fi/uei4bahhwogyq811nmbbl/La-maladie-des-cauchemars.pdf?rlkey=riaajded9ewqkhqtkuungixa4&raw=1"
-  };
+  <script>
+    const logs = {
+      "sextape.mp4": "https://www.dropbox.com/scl/fi/o8m98632t25jtrv9et54p/Rick-Astley-Never-Gonna-Give-You-Up-Official-Music-Video.mp4?rlkey=sfncfiilqt0bddn3jvleram9b&raw=1",
+      "bonne_journée.mp3": "https://www.dropbox.com/scl/fi/iyr4dpwydq4l9purrm06e/rain-a.mp3?rlkey=bdsnvknaoxwqsetvq5aq4t7p6&raw=1",
+      "opinions.jpeg": "https://i.imgur.com/ajHPC5X.png",
+      "weeb_edition_2023.png": "https://i.imgur.com/wacXeBr.png",
+      "weeb_esprit_critique.png": "https://i.imgur.com/3epgwvN.png",
+      "troll.jpeg": "https://i.imgur.com/ty2FOf0.jpeg",
+      "chat_dynamisant.jpeg": "https://i.imgur.com/ST9BpFR.jpeg",
+      "chat_reposant.png": "https://i.imgur.com/d8w0U4J.jpeg",
+      "rien_de_cacophonique": "https://youtube.com/playlist?list=PLuonf0zETMT692stRT9mWzStWQEZsOf9z",
+      "histoire_pas_ouf.pdf": "https://www.dropbox.com/scl/fi/uei4bahhwogyq811nmbbl/La-maladie-des-cauchemars.pdf?rlkey=riaajded9ewqkhqtkuungixa4&raw=1"
+    };
 
-  const commandInput = document.getElementById("command");
-  const consoleOutput = document.getElementById("console");
+    const commandInput = document.getElementById("command");
+    const consoleOutput = document.getElementById("console");
 
-  ["paste", "copy", "cut", "contextmenu"].forEach(event =>
-    commandInput.addEventListener(event, e => e.preventDefault())
-  );
+    // Interdire copier/coller
+    commandInput.addEventListener("paste", e => e.preventDefault());
+    commandInput.addEventListener("copy", e => e.preventDefault());
+    commandInput.addEventListener("cut", e => e.preventDefault());
+    commandInput.addEventListener("contextmenu", e => e.preventDefault());
 
-  function scrollToBottomOf(el) {
-    el.scrollIntoView({ behavior: "smooth", block: "end" });
-  }
-
-  commandInput.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      const value = commandInput.value.trim();
-      if (!value) return;
-
-      const userCommand = document.createElement("div");
-      userCommand.textContent = "> " + value;
-      consoleOutput.appendChild(userCommand);
-
-      if (logs[value]) {
-        const url = logs[value];
-        const ext = value.split('.').pop().toLowerCase();
-
-        let element;
-
-        if (ext === "txt") {
-          fetch(url).then(res => res.text()).then(text => {
-            element = document.createElement("div");
-            element.className = "output-line";
-            element.textContent = text;
-            consoleOutput.appendChild(element);
-            scrollToBottomOf(element);
-          });
-        }
-
-        else if (["jpeg", "jpg", "png", "gif", "webp"].includes(ext)) {
-          element = document.createElement("img");
-          element.src = url;
-          element.className = "displayed-image";
-          consoleOutput.appendChild(element);
-          scrollToBottomOf(element);
-        }
-
-        else if (ext === "mp3") {
-          element = document.createElement("audio");
-          element.controls = true;
-          element.src = url;
-          consoleOutput.appendChild(element);
-          setTimeout(() => element.play().catch(() => {}), 100);
-          scrollToBottomOf(element);
-        }
-
-        else if (ext === "mp4") {
-          element = document.createElement("video");
-          element.controls = true;
-          element.src = url;
-          element.autoplay = true;
-          element.style.maxHeight = "400px";
-          consoleOutput.appendChild(element);
-          setTimeout(() => element.play().catch(() => {}), 100);
-          scrollToBottomOf(element);
-        }
-
-        else if (ext === "pdf") {
-          element = document.createElement("iframe");
-          element.src = url;
-          element.width = "100%";
-          element.height = "600px";
-          consoleOutput.appendChild(element);
-          scrollToBottomOf(element);
-        }
-
-        else if (url.includes("youtube.com/playlist")) {
-          element = document.createElement("iframe");
-          element.src = url;
-          element.width = "100%";
-          element.height = "600px";
-          element.style.border = "2px solid white";
-          element.allowFullscreen = true;
-          consoleOutput.appendChild(element);
-          scrollToBottomOf(element);
-        }
-
-        else {
-          element = document.createElement("div");
-          element.textContent = "Fichier reconnu mais type inconnu.";
-          consoleOutput.appendChild(element);
-          scrollToBottomOf(element);
-        }
-      }
-
-      else {
-        const errorLine = document.createElement("div");
-        errorLine.textContent = "Fichier introuvable.";
-        consoleOutput.appendChild(errorLine);
-        scrollToBottomOf(errorLine);
-      }
-
-      commandInput.value = "";
+    function scrollToBottom() {
+      setTimeout(() => {
+        consoleOutput.scrollTop = consoleOutput.scrollHeight;
+      }, 100);
     }
-  });
+
+    commandInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        const value = commandInput.value.trim();
+        if (value) {
+          const userCommand = document.createElement("div");
+          userCommand.textContent = "> " + value;
+          consoleOutput.appendChild(userCommand);
+
+          if (logs[value]) {
+            const url = logs[value];
+            const ext = value.split('.').pop().toLowerCase();
+
+            if (ext === "txt") {
+              fetch(url)
+                .then(res => res.text())
+                .then(text => {
+                  const textBlock = document.createElement("div");
+                  textBlock.className = "output-line";
+                  textBlock.textContent = text;
+                  consoleOutput.appendChild(textBlock);
+                  scrollToBottom();
+                });
+            } else if (["jpeg", "jpg", "png", "gif", "webp"].includes(ext)) {
+              const img = document.createElement("img");
+              img.src = url;
+              img.className = "displayed-image";
+              consoleOutput.appendChild(img);
+              scrollToBottom();
+            } else if (ext === "mp3") {
+              const audio = document.createElement("audio");
+              audio.controls = true;
+              audio.src = url;
+              audio.autoplay = true;
+              consoleOutput.appendChild(audio);
+              scrollToBottom();
+            } else if (ext === "mp4") {
+              const video = document.createElement("video");
+              video.controls = true;
+              video.src = url;
+              video.autoplay = true;
+              video.style.maxHeight = "400px";
+              consoleOutput.appendChild(video);
+              scrollToBottom();
+            } else if (ext === "pdf") {
+              const iframe = document.createElement("iframe");
+              iframe.src = url;
+              iframe.width = "100%";
+              iframe.height = "600px";
+              consoleOutput.appendChild(iframe);
+              scrollToBottom();
+            } else {
+              // Par défaut ou YouTube
+              const linkOut = document.createElement("a");
+              linkOut.href = url;
+              linkOut.textContent = "🌐 Ouvrir dans un nouvel onglet";
+              linkOut.target = "_blank";
+              linkOut.className = "link-out";
+              consoleOutput.appendChild(linkOut);
+              scrollToBottom();
+            }
+
+          } else {
+            const error = document.createElement("div");
+            error.textContent = "Fichier introuvable.";
+            consoleOutput.appendChild(error);
+            scrollToBottom();
+          }
+
+          commandInput.value = "";
+        }
+      }
+    });
   </script>
 </body>
 </html>
