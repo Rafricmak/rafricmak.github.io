@@ -48,7 +48,6 @@
       flex-grow: 1;
     }
 
-    /* Bouton retour */
     .back-arrow {
       position: absolute;
       top: 15px;
@@ -62,10 +61,24 @@
     .back-arrow:hover {
       color: #ccc;
     }
+
+    img.displayed-image {
+      max-width: 80%;
+      margin: 10px 0;
+      border: 2px solid white;
+    }
+
+    audio, video {
+      margin-top: 10px;
+      max-width: 90%;
+    }
+
+    .output-line {
+      margin-top: 6px;
+    }
   </style>
 </head>
 <body>
-  <!-- Bouton retour -->
   <a href="index.html" class="back-arrow">&#8592;</a>
 
   <div class="console-container">
@@ -85,31 +98,65 @@
   </div>
 
   <script>
+    const logs = {
+      "rapport_avril.txt": "https://raw.githubusercontent.com/jo-sr/test-files/main/rapport_avril.txt",
+      "audio_corrompu.mp3": "https://www.dropbox.com/scl/fi/goa79f46tq9r19pyudpf0/_lisboa.mp3?rlkey=7vhoes7i2efohmuowrq4mfdie&raw=1",
+      "photo_03.jpeg": "https://i.imgur.com/0znBhiC.jpeg",
+      "vidéo_sans_titre.mp4": "https://www.dropbox.com/scl/fi/x12r9tpxeqrpaq1lvu4cf/morning07.mp3?rlkey=srcwsyi0rz3ag6uyxbcaoh44x&raw=1"
+    };
+
     const commandInput = document.getElementById("command");
     const consoleOutput = document.getElementById("console");
 
-    const logs = {
-      "rapport_avril.txt": "https://exemple.com/logs/rapport_avril.txt",
-      "audio_corrompu.mp3": "https://exemple.com/logs/audio_corrompu.mp3",
-      "photo_03.jpeg": "https://i.imgur.com/0znBhiC.jpeg",
-      "vidéo_sans_titre.mp4": "https://exemple.com/logs/video_sans_titre.mp4"
-    };
+    // Interdire copier/coller
+    commandInput.addEventListener("paste", e => e.preventDefault());
+    commandInput.addEventListener("copy", e => e.preventDefault());
+    commandInput.addEventListener("cut", e => e.preventDefault());
+    commandInput.addEventListener("contextmenu", e => e.preventDefault());
 
     commandInput.addEventListener("keydown", function(e) {
       if (e.key === "Enter") {
         const value = commandInput.value.trim();
         if (value) {
-          const newLine = document.createElement("div");
-          newLine.textContent = "> " + value;
-          consoleOutput.appendChild(newLine);
+          const userCommand = document.createElement("div");
+          userCommand.textContent = "> " + value;
+          consoleOutput.appendChild(userCommand);
 
           if (logs[value]) {
-            const link = document.createElement("a");
-            link.href = logs[value];
-            link.textContent = "→ Ouvrir " + value;
-            link.target = "_blank";
-            link.style.color = "#0ff";
-            consoleOutput.appendChild(link);
+            const url = logs[value];
+            const extension = value.split('.').pop().toLowerCase();
+
+            if (extension === "txt") {
+              fetch(url)
+                .then(res => res.text())
+                .then(text => {
+                  const textBlock = document.createElement("div");
+                  textBlock.className = "output-line";
+                  textBlock.textContent = text;
+                  consoleOutput.appendChild(textBlock);
+                });
+            } else if (["jpeg", "jpg", "png", "gif", "webp"].includes(extension)) {
+              const img = document.createElement("img");
+              img.src = url;
+              img.className = "displayed-image";
+              consoleOutput.appendChild(img);
+            } else if (extension === "mp3") {
+              const audio = document.createElement("audio");
+              audio.controls = true;
+              audio.src = url;
+              consoleOutput.appendChild(audio);
+            } else if (extension === "mp4") {
+              const video = document.createElement("video");
+              video.controls = true;
+              video.src = url;
+              video.style.maxHeight = "400px";
+              consoleOutput.appendChild(video);
+            } else {
+              const msg = document.createElement("div");
+              msg.textContent = "Fichier reconnu mais type inconnu.";
+              consoleOutput.appendChild(msg);
+            }
+
           } else {
             const errorLine = document.createElement("div");
             errorLine.textContent = "Fichier introuvable.";
