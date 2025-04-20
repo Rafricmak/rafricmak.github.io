@@ -51,7 +51,7 @@ function copyMail() {
     const img = document.createElement('img');
     img.src = pub.img;
     img.alt = "Publicité rétro";
-    img.style.width = Math.random() > 0.5 ? "120px" : "160px";
+    img.style.width = Math.random() > 0.5 ? "150px" : "200px";
 
     if (Math.random() > 0.7) {
       pubElement.classList.add('pub-blink');
