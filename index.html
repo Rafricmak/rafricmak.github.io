@@ -11,29 +11,32 @@
       font-family: 'Courier New', monospace;
       color: #ffffff;
       background-color: #2f2f2f;
-      background-image: url(https://i.gifer.com/3Hvu.gif);
-      background-size: 1300px auto;
-      background-repeat: no-repeat;
-      background-position: center top;
+      background-image: url(https://i.gifer.com/CTM.gif);
+      background-repeat: repeat;
+      background-size: contain;
       text-align: center;
     }
 
     .content {
       max-width: 800px;
       margin: 80px auto;
+      background-image: url(https://i.gifer.com/3Hvu.gif);
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: 1300px auto;
     }
 
     .section-options {
       margin-top: 80px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 60px 40px;
+      justify-items: center;
       padding-bottom: 100px;
     }
 
     .option-block {
-      max-width: 260px;
+      width: 260px;
       text-align: center;
     }
 
@@ -45,14 +48,20 @@
 
     .option-block img {
       width: 100%;
-      border: 2px solid white;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
       transition: transform 0.2s ease;
       cursor: pointer;
+      display: block;
     }
 
     .option-block img:hover {
       transform: scale(1.05);
+    }
+
+    @media screen and (max-width: 600px) {
+      .section-options {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -78,39 +87,41 @@
     <p>Cette page ne sert à rien. Tout comme notre misérable existence.</p>
     <p>Mais j'ai un site ! C'est cool hein ?</p>
     <h2>Alors, vous voulez faire quoi ?</h2>
-  </div>
 
-  <!-- OPTIONS CLIQUABLES -->
-  <div class="section-options">
+    <!-- OPTIONS CLIQUABLES -->
+    <div class="section-options">
 
-    <div class="option-block">
-      <p>Vous en avez marre d'avoir une vie aussi merdique ?<br>Les réponses sont ici ! Et si jamais il en manque, demandez moi !</p>
-      <a href="faq.html">
-        <img src="https://i.gifer.com/72gi.gif" alt="FAQ">
-      </a>
+      <div class="option-block">
+        <p>Vous en avez marre d'avoir une vie aussi merdique ?<br>
+        Les réponses sont ici ! Et si jamais il en manque, demandez moi !</p>
+        <a href="faq.html">
+          <img src="https://i.gifer.com/72gi.gif" alt="FAQ">
+        </a>
+      </div>
+
+      <div class="option-block">
+        <p>Vous souhaitez observer la magnificence du monde ?<br>
+        Alors c'est ici ! Hein comment ça la mienne ? Oh vous me gênez là !<br>(mais ça reste ici)</p>
+        <a href="galerie.html">
+          <img src="https://i.gifer.com/5FBi.gif" alt="Galerie">
+        </a>
+      </div>
+
+      <div class="option-block">
+        <p>Venez clubber un max !<br>Le fun est à votre portée !</p>
+        <a href="logs.html">
+          <img src="https://i.gifer.com/Dtk.gif" alt="Logs">
+        </a>
+      </div>
+
+      <div class="option-block">
+        <p>En travaux pour l'instant désolé !</p>
+        <a href="page_mystere.html">
+          <img src="https://i.gifer.com/3IsP.gif" alt="À venir">
+        </a>
+      </div>
+
     </div>
-
-    <div class="option-block">
-      <p>Vous souhaitez observer la magnificence du monde ?<br>Alors c'est ici ! Hein comment ça la mienne ? Oh vous me gênez là !<br>(mais ça reste ici)</p>
-      <a href="galerie.html">
-        <img src="https://i.gifer.com/WUUT.gif" alt="Galerie">
-      </a>
-    </div>
-
-    <div class="option-block">
-      <p>Venez clubber un max !<br>Le fun est à votre portée !</p>
-      <a href="logs.html">
-        <img src="https://i.gifer.com/Dtk.gif" alt="Logs">
-      </a>
-    </div>
-
-    <div class="option-block">
-      <p>En travaux pour l'instant désolé !</p>
-      <a href="page_mystere.html">
-        <img src="https://i.gifer.com/3IsP.gif" alt="À venir">
-      </a>
-    </div>
-
   </div>
 </body>
 </html>
