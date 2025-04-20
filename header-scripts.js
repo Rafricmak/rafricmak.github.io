@@ -28,15 +28,18 @@ function copyMail() {
   ];
 
   const positions = [
+    { class: "pub-left", top: "5%" },
     { class: "pub-left", top:  "15%" },
+    { class: "pub-left", top: "25%" },
     { class: "pub-left", top:  "35%" },
     { class: "pub-left", top:  "65%" },
+    { class: "pub-left", top: "85%" },
+    { class: "pub-right", top: "5%" },
     { class: "pub-right", top: "15%" },
+    { class: "pub-right", top: "25%" },
     { class: "pub-right", top: "35%" },
     { class: "pub-right", top: "65%" },
-    { class: "pub-right", top: "85%" },
-    { class: "pub-right", top: "85%" },
-    { class: "pub-right", top: "96%" }
+    { class: "pub-right", top: "85%" }
   ];
 
   const numPubs = Math.min(9, pubs.length);
