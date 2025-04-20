@@ -82,13 +82,6 @@
     .output-line {
       margin-top: 6px;
     }
-
-    .link-out {
-      margin-top: 10px;
-      display: inline-block;
-      color: #0af;
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
@@ -133,11 +126,10 @@
     const commandInput = document.getElementById("command");
     const consoleOutput = document.getElementById("console");
 
-    // Interdire copier/coller
-    commandInput.addEventListener("paste", e => e.preventDefault());
-    commandInput.addEventListener("copy", e => e.preventDefault());
-    commandInput.addEventListener("cut", e => e.preventDefault());
-    commandInput.addEventListener("contextmenu", e => e.preventDefault());
+    // Empêche copier/coller
+    ["paste", "copy", "cut", "contextmenu"].forEach(evt => {
+      commandInput.addEventListener(evt, e => e.preventDefault());
+    });
 
     function scrollToBottom() {
       setTimeout(() => {
@@ -196,20 +188,14 @@
               consoleOutput.appendChild(iframe);
               scrollToBottom();
             } else {
-              // Par défaut ou YouTube
-              const linkOut = document.createElement("a");
-              linkOut.href = url;
-              linkOut.textContent = "🌐 Ouvrir dans un nouvel onglet";
-              linkOut.target = "_blank";
-              linkOut.className = "link-out";
-              consoleOutput.appendChild(linkOut);
-              scrollToBottom();
+              // Tout ce qui est externe (genre lien YouTube)
+              window.open(url, "_blank");
             }
 
           } else {
-            const error = document.createElement("div");
-            error.textContent = "Fichier introuvable.";
-            consoleOutput.appendChild(error);
+            const errorLine = document.createElement("div");
+            errorLine.textContent = "Fichier introuvable.";
+            consoleOutput.appendChild(errorLine);
             scrollToBottom();
           }
 
