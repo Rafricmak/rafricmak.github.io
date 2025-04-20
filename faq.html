@@ -22,75 +22,6 @@
       overflow-x: hidden;
     }
 
-    /* Menu fixe */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      background-color: rgba(0, 0, 0, 0.7);
-      z-index: 1000;
-    }
-
-    .nav-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 40px;
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      top: 50%;
-    }
-
-    .nav-links li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      font-family: 'Courier New', monospace;
-    }
-
-    .nav-links li a:hover {
-      color: #ccc;
-    }
-
-    .nav-right {
-      position: absolute;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .nav-icons {
-      display: flex;
-      gap: 12px;
-    }
-
-    .nav-icons img {
-      height: 30px;
-      cursor: pointer;
-    }
-
-    .profile {
-      text-align: center;
-    }
-
-    .profile img {
-      height: 48px;
-      border-radius: 6px;
-    }
-
-    .profile-name {
-      color: #fff;
-      font-size: 13px;
-      font-family: monospace;
-    }
-
     .faq-container {
       width: 80%;
       margin: 0 auto;
@@ -142,40 +73,18 @@
 
 <body>
 
-  <!-- NAVIGATION + ICÔNES -->
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="galerie.html">Galerie</a></li>
-    </ul>
+  <!-- IMPORT DU HEADER PARTAGÉ -->
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("header").innerHTML = html);
+  </script>
 
-    <div class="nav-right">
-      <div class="nav-icons">
-        <a href="https://discord.gg/2nYVtahdZJ" target="_blank" title="Mon Discord">
-          <img src="https://i.imgur.com/HvEteSA.png" alt="Discord">
-        </a>
-        <a href="https://www.instagram.com/rafricmak_13/" target="_blank" title="Mon Instagram">
-          <img src="https://i.imgur.com/8vAkg1u.png" alt="Instagram">
-        </a>
-        <a href="#" onclick="copyMail()" title="Clique pour copier mon mail">
-          <img src="https://i.imgur.com/tqanmFS.png" alt="Gmail">
-        </a>
-      </div>
-
-      <div class="profile">
-        <img src="https://i.imgur.com/R2JQxd9.png" alt="Rafricmak"><br>
-        <span class="profile-name">Rafricmak</span>
-      </div>
-    </div>
-  </nav>
-
-  <!-- CONTENU FAQ -->
+  <!-- CONTENU DE LA FAQ -->
   <div class="faq-container">
     <h1>FAQ</h1>
 
-    <!-- Questions / Réponses -->
-    <!-- Je reprends tes questions sans les modifier ici -->
     <p class="question">Pourquoi avoir créé ce site ?</p>
     <p class="reponse">Pour combler le vide de <strong>MA</strong> matérialité via un espace entièrement maniable.</p>
 
@@ -230,14 +139,6 @@
 
     <a href="faq_visiteurs.html">Lire les questions posées par les visiteurs ici. Enfin genre, vraiment, cette phrase est un lien.</a>
   </div>
-
-  <!-- Script pour copier l'adresse email -->
-  <script>
-    function copyMail() {
-      navigator.clipboard.writeText("rafricmak@gmail.com");
-      alert("Adresse e-mail copiée !");
-    }
-  </script>
 
 </body>
 </html>
