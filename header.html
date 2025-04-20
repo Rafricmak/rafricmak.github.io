@@ -1,4 +1,3 @@
-<!-- HEADER PARTAGÉ POUR TOUTES LES PAGES -->
 <nav>
   <ul class="nav-links">
     <li><a href="index.html">Accueil</a></li>
@@ -25,28 +24,12 @@
   </div>
 </nav>
 
-<!-- LECTEUR SCM -->
-<script type="text/javascript" src="https://www.scmplayer.net/script.js"
-data-config="{
-  'skin': 'https://static.tumblr.com/su8juwr/qNKmnc3jh/simplesdesenho.css',
-  'volume': 30,
-  'autoplay': true,
-  'shuffle': false,
-  'repeat': 1,
-  'placement': 'top',
-  'showplaylist': false,
-  'playlist': [
-    {'title': '50sMeldy.midi', 'url': 'https://www.dropbox.com/scl/fi/ys9jb33tvz8k7xpsng58i/50smedly.mp3?rlkey=p0if89ncsc3tgh3flwisn0lgv&raw=1'},
-    {'title': 'lisboa.mp3', 'url': 'https://www.dropbox.com/scl/fi/goa79f46tq9r19pyudpf0/_lisboa.mp3?rlkey=7vhoes7i2efohmuowrq4mfdie&raw=1'},
-    {'title': 'raina.midi', 'url': 'https://www.dropbox.com/scl/fi/iyr4dpwydq4l9purrm06e/raina.mp3?rlkey=bdsnvknaoxwqsetvq5aq4t7p6&raw=1'},
-    {'title': 'morning7.mp3', 'url': 'https://www.dropbox.com/scl/fi/x12r9tpxeqrpaq1lvu4cf/morning07.mp3?rlkey=srcwsyi0rz3ag6uyxbcaoh44x&raw=1'},
-    {'title': '5oclock.midi', 'url': 'https://www.dropbox.com/scl/fi/5wcr07zphm8333v5x8jv4/5oclock.mp3?rlkey=lao7xbag3ke9adhrc6770cznf&raw=1'}
-  ]
-}">
-</script>
-<!-- FIN SCM -->
+<!-- LECTEUR DE MUSIQUE (Version simplifiée) -->
+<iframe 
+  src="https://scmplayer.net/#autoplay=true&shuffle=false&volume=30&skin=https://static.tumblr.com/su8juwr/qNKmnc3jh/simplesdesenho.css&playlist=true&list=50sMeldy.midi,https://www.dropbox.com/scl/fi/ys9jb33tvz8k7xpsng58i/50smedly.mp3?rlkey=p0if89ncsc3tgh3flwisn0lgv&raw=1|lisboa.mp3,https://www.dropbox.com/scl/fi/goa79f46tq9r19pyudpf0/_lisboa.mp3?rlkey=7vhoes7i2efohmuowrq4mfdie&raw=1|raina.midi,https://www.dropbox.com/scl/fi/iyr4dpwydq4l9purrm06e/raina.mp3?rlkey=bdsnvknaoxwqsetvq5aq4t7p6&raw=1|morning7.mp3,https://www.dropbox.com/scl/fi/x12r9tpxeqrpaq1lvu4cf/morning07.mp3?rlkey=srcwsyi0rz3ag6uyxbcaoh44x&raw=1|5oclock.midi,https://www.dropbox.com/scl/fi/5wcr07zphm8333v5x8jv4/5oclock.mp3?rlkey=lao7xbag3ke9adhrc6770cznf&raw=1" 
+  style="display:block; width:100%; height:60px; border:none; margin-top:60px;"
+></iframe>
 
-<!-- STYLE NAV -->
 <style>
   nav {
     position: fixed;
@@ -117,7 +100,6 @@ data-config="{
   }
 </style>
 
-<!-- SCRIPT COPIE MAIL -->
 <script>
   function copyMail() {
     navigator.clipboard.writeText("rafricmak@gmail.com");
