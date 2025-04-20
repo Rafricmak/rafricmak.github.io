@@ -15,75 +15,6 @@
       position: relative;
     }
 
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      background-color: rgba(0, 0, 0, 0.7);
-      z-index: 1000;
-    }
-
-    .nav-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 40px;
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      top: 50%;
-    }
-
-    .nav-links li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      font-family: 'Courier New', monospace;
-    }
-
-    .nav-links li a:hover {
-      color: #ccc;
-    }
-
-    .nav-right {
-      position: absolute;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .nav-icons {
-      display: flex;
-      gap: 12px;
-    }
-
-    .nav-icons img {
-      height: 30px;
-      cursor: pointer;
-    }
-
-    .profile {
-      text-align: center;
-    }
-
-    .profile img {
-      height: 48px;
-      border-radius: 6px;
-    }
-
-    .profile-name {
-      color: #fff;
-      font-size: 13px;
-      font-family: monospace;
-    }
-
-    /* G A L E R I E */
     .galerie {
       display: flex;
       flex-wrap: wrap;
@@ -107,7 +38,6 @@
       transform: scale(1.05);
     }
 
-    /* ZOOM MODE */
     #zoom {
       position: fixed;
       top: 0;
@@ -127,7 +57,6 @@
       border: 5px solid white;
     }
 
-    /* ÉTOILES ANIMÉES */
     .star {
       position: absolute;
       width: 100px;
@@ -137,36 +66,15 @@
     }
   </style>
 </head>
-
 <body>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="galerie.html">Galerie</a></li>
-    </ul>
-
-    <div class="nav-right">
-      <div class="nav-icons">
-        <a href="https://discord.gg/2nYVtahdZJ" target="_blank" title="Mon Discord">
-          <img src="https://i.imgur.com/HvEteSA.png" alt="Discord">
-        </a>
-        <a href="https://www.instagram.com/rafricmak_13/" target="_blank" title="Mon Instagram">
-          <img src="https://i.imgur.com/8vAkg1u.png" alt="Instagram">
-        </a>
-        <a href="#" onclick="copyMail()" title="Clique pour copier mon mail">
-          <img src="https://i.imgur.com/tqanmFS.png" alt="Gmail">
-        </a>
-      </div>
-
-      <div class="profile">
-        <img src="https://i.imgur.com/R2JQxd9.png" alt="Rafricmak"><br>
-        <span class="profile-name">Rafricmak</span>
-      </div>
-    </div>
-  </nav>
+  <!-- MENU ET MUSIQUE (chargés dynamiquement) -->
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("header").innerHTML = html);
+  </script>
 
   <!-- G A L E R I E -->
   <div class="galerie">
@@ -175,12 +83,12 @@
     <img src="https://i.imgur.com/9SVU2Dx.jpeg" title="Encore un souvenir impossible.">
   </div>
 
-  <!-- ZOOM POPUP -->
+  <!-- ZOOM -->
   <div id="zoom" onclick="this.style.display='none'">
     <img src="" id="zoom-img">
   </div>
 
-  <!-- ÉTOILES ALÉATOIRES -->
+  <!-- ÉTOILES -->
   <script>
     const starUrls = [
       "https://i.gifer.com/origin/98/98767abf1efb9ba7b1155e27879fc851_w200.webp",
@@ -196,7 +104,6 @@
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0038.gif",
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0002.gif",
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0001.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0038.gif",
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0050.gif",
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0061.gif",
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0103.gif",
@@ -210,7 +117,6 @@
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0036.gif",
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0037.gif",
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0052.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0052.gif",
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0053.gif",
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0063.gif",
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0072.gif",
@@ -218,7 +124,7 @@
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0127.gif",
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0143.gif",
       "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0151.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0161.gif",
+      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0161.gif"
     ];
 
     for (let i = 0; i < 100; i++) {
@@ -229,11 +135,6 @@
       star.style.top = Math.random() * 2000 + "px";
       star.style.left = Math.random() * window.innerWidth + "px";
       document.body.appendChild(star);
-    }
-
-    function copyMail() {
-      navigator.clipboard.writeText("rafricmak@gmail.com");
-      alert("Adresse e-mail copiée !");
     }
 
     // ZOOM IMAGE
@@ -248,6 +149,5 @@
       });
     });
   </script>
-
 </body>
 </html>
