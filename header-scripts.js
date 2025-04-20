@@ -6,25 +6,25 @@ function copyMail() {
 // Ajout dynamique des pubs rétro
 (function () {
   const pubs = [
-    { img: "https://boodlebox.neocities.org/ie4.gif", link: "https://web.archive.org/web/20030218022750/http://www.microsoft.com/windows/ie/default.mspx" },
-    { img: "https://boodlebox.neocities.org/inh.gif", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
-    { img: "https://boodlebox.neocities.org/hell2.gif", link: "https://en.wikipedia.org/wiki/Geocities" },
-    { img: "https://boodlebox.neocities.org/arsenic.gif", link: "https://www.youtube.com/watch?v=IH1Px8qaZtg" },
-    { img: "https://boodlebox.neocities.org/antibro4.gif", link: "http://www.windows93.net/" },
-    { img: "https://boodlebox.neocities.org/02.gif", link: "https://www.youtube.com/watch?v=3dfaZ9ADMvY" },
-    { img: "https://boodlebox.neocities.org/nose.gif", link: "https://www.bonziworld.com/" },
-    { img: "https://boodlebox.neocities.org/twobit.gif", link: "https://www.theuselessweb.com/" },
-    { img: "https://boodlebox.neocities.org/100.gif", link: "https://www.spacejam.com/1996/" },
-    { img: "https://boodlebox.neocities.org/smiley.gif", link: "https://www.homestarrunner.com/" },
-    { img: "https://boodlebox.neocities.org/spel.gif", link: "https://www.cameronsworld.net/" },
-    { img: "https://boodlebox.neocities.org/bs2.gif", link: "https://www.youtube.com/watch?v=Wq5Y4fRy6Y4" },
-    { img: "https://boodlebox.neocities.org/webspace.gif", link: "https://neocities.org/" },
-    { img: "https://i.gifer.com/AADL.gif", link: "https://www.youtube.com/watch?v=otCpCn0l4Wo" },
-    { img: "https://i.gifer.com/Eoug.gif", link: "https://www.youtube.com/watch?v=oHg5SJYRHA0" },
-    { img: "https://i.gifer.com/IVcr.gif", link: "https://www.my-internet-explorer.com/" },
-    { img: "https://i.gifer.com/DqS9.gif", link: "https://www.winamp.com/" },
-    { img: "https://i.gifer.com/Hr5U.gif", link: "https://www.netscape.com/" },
-    { img: "https://i.gifer.com/JXmm.gif", link: "https://www.mozilla.org/en-US/firefox/new/" }
+  { img: "https://boodlebox.neocities.org/ie4.gif", link: "https://miamoalex.net/home" }, // Ton site référence
+  { img: "https://boodlebox.neocities.org/inh.gif", link: "https://windows93.net/" }, // Parfaitement dans le thème
+  { img: "https://boodlebox.neocities.org/hell2.gif", link: "https://www.cameronsworld.net/" }, // Hommage à Geocities
+  { img: "https://boodlebox.neocities.org/arsenic.gif", link: "https://geocities.restorativland.org/" }, // Archive GeoCities
+  { img: "https://boodlebox.neocities.org/antibro4.gif", link: "https://cyber.dabamos.de/88x31/" }, // Collection de bannières retro
+  { img: "https://boodlebox.neocities.org/02.gif", link: "https://gifcities.org/" }, // Moteur de recherche de gifs GeoCities
+  { img: "https://boodlebox.neocities.org/nose.gif", link: "https://www.bonziworld.com/" }, // BonziBuddy revival
+  { img: "https://boodlebox.neocities.org/twobit.gif", link: "https://www.theoldnet.com/" }, // Navigateur d’internet passé
+  { img: "https://boodlebox.neocities.org/100.gif", link: "https://www.spacejam.com/1996/" }, // Site original de Space Jam
+  { img: "https://boodlebox.neocities.org/smiley.gif", link: "https://www.homestarrunner.com/" }, // Cartoon rétro culte
+  { img: "https://boodlebox.neocities.org/spel.gif", link: "https://www.frogfind.com/" }, // Moteur de recherche rétro
+  { img: "https://boodlebox.neocities.org/bs2.gif", link: "https://motherfuckingwebsite.com/" }, // Design minimaliste satirique
+  { img: "https://boodlebox.neocities.org/webspace.gif", link: "https://neocities.org/" }, // Hébergeur à l’ancienne
+  { img: "https://i.gifer.com/AADL.gif", link: "https://textfiles.com/" }, // Bibliothèque brute de fichiers .txt
+  { img: "https://i.gifer.com/Eoug.gif", link: "https://sadgrl.online/" }, // Un site perso ultra inspiré du style 2000s
+  { img: "https://i.gifer.com/IVcr.gif", link: "https://poolside.fm/" }, // Web radio rétro stylée
+  { img: "https://i.gifer.com/DqS9.gif", link: "https://winamp2-js.herokuapp.com/" }, // Simulateur Winamp 2.9
+  { img: "https://i.gifer.com/Hr5U.gif", link: "https://toastytech.com/" }, // Muséum de vieilles UI Windows
+  { img: "https://i.gifer.com/JXmm.gif", link: "https://www.kaleidoscope.app/archive/" } // Archive web artistique
   ];
 
   const positions = [
