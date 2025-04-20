@@ -25,18 +25,28 @@
   </div>
 </nav>
 
-<!-- BOUTONS MUSIQUE -->
-<div style="position: fixed; top: 10px; left: 10px; z-index: 9999; display: flex; gap: 10px; align-items: center;">
-  <img id="toggle-music" src="https://i.imgur.com/WHEdHwe.png" alt="toggle music" style="height: 30px; cursor: pointer;" title="Couper ou relancer la musique">
-  <img id="next-music" src="https://i.imgur.com/wE55GC1.png" alt="musique suivante" style="height: 30px; cursor: pointer;" title="Musique suivante">
-</div>
+<!-- LECTEUR SCM -->
+<script type="text/javascript" src="https://www.scmplayer.net/script.js"
+data-config="{
+  'skin': 'https://static.tumblr.com/su8juwr/qNKmnc3jh/simplesdesenho.css',
+  'volume': 30,
+  'autoplay': true,
+  'shuffle': false,
+  'repeat': 1,
+  'placement': 'top',
+  'showplaylist': false,
+  'playlist': [
+    {'title': '50sMeldy.midi', 'url': 'https://www.dropbox.com/scl/fi/ys9jb33tvz8k7xpsng58i/50smedly.mp3?rlkey=p0if89ncsc3tgh3flwisn0lgv&raw=1'},
+    {'title': 'lisboa.mp3', 'url': 'https://www.dropbox.com/scl/fi/goa79f46tq9r19pyudpf0/_lisboa.mp3?rlkey=7vhoes7i2efohmuowrq4mfdie&raw=1'},
+    {'title': 'raina.midi', 'url': 'https://www.dropbox.com/scl/fi/iyr4dpwydq4l9purrm06e/raina.mp3?rlkey=bdsnvknaoxwqsetvq5aq4t7p6&raw=1'},
+    {'title': 'morning7.mp3', 'url': 'https://www.dropbox.com/scl/fi/x12r9tpxeqrpaq1lvu4cf/morning07.mp3?rlkey=srcwsyi0rz3ag6uyxbcaoh44x&raw=1'},
+    {'title': '5oclock.midi', 'url': 'https://www.dropbox.com/scl/fi/5wcr07zphm8333v5x8jv4/5oclock.mp3?rlkey=lao7xbag3ke9adhrc6770cznf&raw=1'}
+  ]
+}">
+</script>
+<!-- FIN SCM -->
 
-<!-- AUDIO PLAYER -->
-<audio id="bg-music" autoplay loop>
-  <source src="https://www.dropbox.com/scl/fi/ys9jb33tvz8k7xpsng58i/50smedly.mp3?rlkey=p0if89ncsc3tgh3flwisn0lgv&raw=1" type="audio/mpeg">
-</audio>
-
-<!-- STYLE DU HEADER -->
+<!-- STYLE NAV -->
 <style>
   nav {
     position: fixed;
@@ -107,39 +117,8 @@
   }
 </style>
 
-<!-- SCRIPTS -->
+<!-- SCRIPT COPIE MAIL -->
 <script>
-  const playlist = [
-    "https://www.dropbox.com/scl/fi/ys9jb33tvz8k7xpsng58i/50smedly.mp3?rlkey=p0if89ncsc3tgh3flwisn0lgv&raw=1",
-    "https://www.dropbox.com/scl/fi/goa79f46tq9r19pyudpf0/_lisboa.mp3?rlkey=7vhoes7i2efohmuowrq4mfdie&raw=1",
-    "https://www.dropbox.com/scl/fi/iyr4dpwydq4l9purrm06e/raina.mp3?rlkey=bdsnvknaoxwqsetvq5aq4t7p6&raw=1",
-    "https://www.dropbox.com/scl/fi/x12r9tpxeqrpaq1lvu4cf/morning07.mp3?rlkey=srcwsyi0rz3ag6uyxbcaoh44x&raw=1",
-    "https://www.dropbox.com/scl/fi/5wcr07zphm8333v5x8jv4/5oclock.mp3?rlkey=lao7xbag3ke9adhrc6770cznf&raw=1"
-  ];
-
-  let currentTrack = 0;
-  const audio = document.getElementById("bg-music");
-  const toggleBtn = document.getElementById("toggle-music");
-  const nextBtn = document.getElementById("next-music");
-  let playing = true;
-
-  toggleBtn.addEventListener("click", () => {
-    if (playing) {
-      audio.pause();
-      toggleBtn.src = "https://i.imgur.com/pbFe8hV.png";
-    } else {
-      audio.play();
-      toggleBtn.src = "https://i.imgur.com/WHEdHwe.png";
-    }
-    playing = !playing;
-  });
-
-  nextBtn.addEventListener("click", () => {
-    currentTrack = (currentTrack + 1) % playlist.length;
-    audio.src = playlist[currentTrack];
-    if (playing) audio.play();
-  });
-
   function copyMail() {
     navigator.clipboard.writeText("rafricmak@gmail.com");
     alert("Adresse e-mail copiée !");
