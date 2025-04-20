@@ -92,12 +92,18 @@
 <body>
 
   <!-- HEADER PARTAGÉ -->
-  <div id="header"></div>
-  <script>
-    fetch("header.html")
-      .then(res => res.text())
-      .then(html => document.getElementById("header").innerHTML = html);
-  </script>
+<div id="header"></div>
+
+<script>
+  fetch("header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("header").innerHTML = html;
+      const script = document.createElement('script');
+      script.src = "header-scripts.js";
+      document.body.appendChild(script);
+    });
+</script>
 
   <!-- CONTENU -->
   <div class="faq-container">
