@@ -1,64 +1,51 @@
-function copyMail() {
-  navigator.clipboard.writeText("rafricmak@gmail.com");
-  alert("Adresse e-mail copiée !");
-}
-
-// Ajout dynamique des pubs rétro
-(function () {
+document.addEventListener('DOMContentLoaded', function() {
   const pubs = [
-    { img: "https://boodlebox.neocities.org/ie4.gif", link: "https://web.archive.org/web/20030218022750/http://www.microsoft.com/windows/ie/default.mspx" },
-    { img: "https://boodlebox.neocities.org/inh.gif", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
-    { img: "https://boodlebox.neocities.org/hell2.gif", link: "https://en.wikipedia.org/wiki/Geocities" },
-    { img: "https://boodlebox.neocities.org/arsenic.gif", link: "https://www.youtube.com/watch?v=IH1Px8qaZtg" },
-    { img: "https://boodlebox.neocities.org/antibro4.gif", link: "http://www.windows93.net/" },
-    { img: "https://boodlebox.neocities.org/02.gif", link: "https://www.youtube.com/watch?v=3dfaZ9ADMvY" },
-    { img: "https://boodlebox.neocities.org/nose.gif", link: "https://www.bonziworld.com/" },
-    { img: "https://boodlebox.neocities.org/twobit.gif", link: "https://www.theuselessweb.com/" },
+    { img: "https://boodlebox.neocities.org/ie4.gif", link: "https://windows93.net" },
+    { img: "https://boodlebox.neocities.org/inh.gif", link: "https://www.cameronsworld.net" },
+    { img: "https://boodlebox.neocities.org/hell2.gif", link: "https://theuselessweb.com" },
+    { img: "https://boodlebox.neocities.org/arsenic.gif", link: "https://www.bonziworld.com" },
+    { img: "https://boodlebox.neocities.org/antibro4.gif", link: "https://archive.org/details/win3_browser" },
+    { img: "https://boodlebox.neocities.org/02.gif", link: "https://www.dialupmodem.com" },
+    { img: "https://boodlebox.neocities.org/nose.gif", link: "https://www.my-internet-explorer.com" },
+    { img: "https://boodlebox.neocities.org/twobit.gif", link: "https://www.windows93.net" },
     { img: "https://boodlebox.neocities.org/100.gif", link: "https://www.spacejam.com/1996/" },
-    { img: "https://boodlebox.neocities.org/smiley.gif", link: "https://www.homestarrunner.com/" },
-    { img: "https://boodlebox.neocities.org/spel.gif", link: "https://www.cameronsworld.net/" },
-    { img: "https://boodlebox.neocities.org/bs2.gif", link: "https://www.youtube.com/watch?v=Wq5Y4fRy6Y4" },
-    { img: "https://boodlebox.neocities.org/webspace.gif", link: "https://neocities.org/" },
-    { img: "https://i.gifer.com/AADL.gif", link: "https://www.youtube.com/watch?v=otCpCn0l4Wo" },
-    { img: "https://i.gifer.com/Eoug.gif", link: "https://www.youtube.com/watch?v=oHg5SJYRHA0" },
-    { img: "https://i.gifer.com/IVcr.gif", link: "https://www.my-internet-explorer.com/" },
-    { img: "https://i.gifer.com/DqS9.gif", link: "https://www.winamp.com/" },
-    { img: "https://i.gifer.com/Hr5U.gif", link: "https://www.netscape.com/" },
-    { img: "https://i.gifer.com/JXmm.gif", link: "https://www.mozilla.org/en-US/firefox/new/" }
+    { img: "https://boodlebox.neocities.org/smiley.gif", link: "https://www.patience-is-a-virtue.org" },
+    { img: "https://boodlebox.neocities.org/spel.gif", link: "https://corndog.io/" },
+    { img: "https://boodlebox.neocities.org/bs2.gif", link: "https://www.internetarchaeology.org" },
+    { img: "https://boodlebox.neocities.org/webspace.gif", link: "https://neocities.org" },
+    { img: "https://i.gifer.com/AADL.gif", link: "https://heavens-above.com" },
+    { img: "https://i.gifer.com/Eoug.gif", link: "https://www.lingscars.com/" },
+    { img: "https://i.gifer.com/IVcr.gif", link: "https://www.netscapenow.com" },
+    { img: "https://i.gifer.com/DqS9.gif", link: "https://www.archive.org/details/winamp_classic" },
+    { img: "https://i.gifer.com/Hr5U.gif", link: "https://www.fat-pie.com" },
+    { img: "https://i.gifer.com/JXmm.gif", link: "https://www.geocities.ws" }
   ];
 
-  const positions = [
-    { class: "pub-left", top: "15%" },
-    { class: "pub-left", top: "35%" },
-    { class: "pub-left", top: "65%" },
-    { class: "pub-right", top: "15%" },
-    { class: "pub-right", top: "35%" },
-    { class: "pub-right", top: "65%" },
-    { class: "pub-bottom", top: "90%" }
-  ];
+  const sides = ["pub-left", "pub-right"];
 
-  const numPubs = Math.min(5, pubs.length);
+  const numPubs = Math.floor(Math.random() * 5) + 2; // entre 2 et 6 pubs
   const shuffledPubs = pubs.sort(() => 0.5 - Math.random()).slice(0, numPubs);
 
   shuffledPubs.forEach((pub, index) => {
-    const position = positions[index % positions.length];
+    const side = sides[Math.floor(Math.random() * sides.length)];
+    const randomTop = Math.floor(Math.random() * 80) + 10; // entre 10% et 90%
+
     const pubElement = document.createElement('a');
     pubElement.href = pub.link;
     pubElement.target = "_blank";
-    pubElement.className = `pub ${position.class}`;
-    pubElement.style.top = position.top;
+    pubElement.className = `pub ${side}`;
+    pubElement.style.top = `${randomTop}%`;
 
     const img = document.createElement('img');
     img.src = pub.img;
     img.alt = "Publicité rétro";
-    img.style.width = Math.random() > 0.5 ? "150px" : "200px";
+    img.style.width = Math.random() > 0.5 ? "150px" : "200px"; // ➜ taille augmentée ici
 
     if (Math.random() > 0.7) {
       pubElement.classList.add('pub-blink');
     }
 
     pubElement.appendChild(img);
-    const container = document.getElementById('pub-container');
-    if (container) container.appendChild(pubElement);
+    document.getElementById('pub-container').appendChild(pubElement);
   });
-})();
+});
