@@ -119,7 +119,7 @@
       "Troll.jpeg": "https://i.imgur.com/ty2FOf0.jpeg",
       "chat_dynamisant.jpeg": "https://i.imgur.com/ST9BpFR.jpeg",
       "chat_reposant.png": "https://i.imgur.com/d8w0U4J.jpeg",
-      "rien_de_cacophonique": "https://www.youtube.com/embed/videoseries?list=PLuonf0zETMT692stRT9mWzStWQEZsOf9z",
+      "rien_de_cacophonique": "https://www.youtube.com/embed/videoseries?list=PLuonf0zETMT692stRT9mWzStWQEZsOf9z&autoplay=0",
       "histoire_pas_ouf.pdf": "https://www.dropbox.com/scl/fi/uei4bahhwogyq811nmbbl/La-maladie-des-cauchemars.pdf?rlkey=riaajded9ewqkhqtkuungixa4&raw=1"
     };
 
@@ -151,29 +151,36 @@
                   textBlock.className = "output-line";
                   textBlock.textContent = text;
                   consoleOutput.appendChild(textBlock);
+                  scrollToBottom();
                 });
             } else if (["jpeg", "jpg", "png", "gif", "webp"].includes(extension)) {
               const img = document.createElement("img");
               img.src = url;
               img.className = "displayed-image";
               consoleOutput.appendChild(img);
+              scrollToBottom();
             } else if (extension === "mp3") {
               const audio = document.createElement("audio");
               audio.controls = true;
               audio.src = url;
+              audio.autoplay = true;
               consoleOutput.appendChild(audio);
+              scrollToBottom();
             } else if (extension === "mp4") {
               const video = document.createElement("video");
               video.controls = true;
               video.src = url;
+              video.autoplay = true;
               video.style.maxHeight = "400px";
               consoleOutput.appendChild(video);
+              scrollToBottom();
             } else if (extension === "pdf") {
               const iframe = document.createElement("iframe");
               iframe.src = url;
               iframe.width = "100%";
               iframe.height = "600px";
               consoleOutput.appendChild(iframe);
+              scrollToBottom();
             } else if (url.includes("youtube.com/embed/videoseries")) {
               const iframe = document.createElement("iframe");
               iframe.src = url;
@@ -182,22 +189,28 @@
               iframe.allow = "autoplay; encrypted-media";
               iframe.allowFullscreen = true;
               consoleOutput.appendChild(iframe);
+              scrollToBottom();
             } else {
               const msg = document.createElement("div");
               msg.textContent = "Fichier reconnu mais type inconnu.";
               consoleOutput.appendChild(msg);
+              scrollToBottom();
             }
           } else {
             const errorLine = document.createElement("div");
             errorLine.textContent = "Fichier introuvable.";
             consoleOutput.appendChild(errorLine);
+            scrollToBottom();
           }
 
           commandInput.value = "";
-          consoleOutput.scrollTop = consoleOutput.scrollHeight;
         }
       }
     });
+
+    function scrollToBottom() {
+      consoleOutput.scrollTop = consoleOutput.scrollHeight;
+    }
   </script>
 </body>
 </html>
