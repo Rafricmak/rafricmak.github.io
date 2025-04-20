@@ -1,0 +1,147 @@
+<!-- HEADER PARTAGÉ POUR TOUTES LES PAGES -->
+<nav>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="galerie.html">Galerie</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="nav-icons">
+      <a href="https://discord.gg/2nYVtahdZJ" target="_blank" title="Mon Discord">
+        <img src="https://i.imgur.com/HvEteSA.png" alt="Discord">
+      </a>
+      <a href="https://www.instagram.com/rafricmak_13/" target="_blank" title="Mon Instagram">
+        <img src="https://i.imgur.com/8vAkg1u.png" alt="Instagram">
+      </a>
+      <a href="#" onclick="copyMail()" title="Clique pour copier mon mail">
+        <img src="https://i.imgur.com/tqanmFS.png" alt="Gmail">
+      </a>
+    </div>
+    <div class="profile">
+      <img src="https://i.imgur.com/R2JQxd9.png" alt="Rafricmak"><br>
+      <span class="profile-name">Rafricmak</span>
+    </div>
+  </div>
+</nav>
+
+<!-- BOUTONS MUSIQUE -->
+<div style="position: fixed; top: 10px; left: 10px; z-index: 9999; display: flex; gap: 10px; align-items: center;">
+  <img id="toggle-music" src="https://i.imgur.com/WHEdHwe.png" alt="toggle music" style="height: 30px; cursor: pointer;" title="Couper ou relancer la musique">
+  <img id="next-music" src="https://i.imgur.com/wE55GC1.png" alt="musique suivante" style="height: 30px; cursor: pointer;" title="Musique suivante">
+</div>
+
+<!-- AUDIO PLAYER -->
+<audio id="bg-music" autoplay loop>
+  <source src="https://www.dropbox.com/scl/fi/ys9jb33tvz8k7xpsng58i/50smedly.mp3?rlkey=p0if89ncsc3tgh3flwisn0lgv&raw=1" type="audio/mpeg">
+</audio>
+
+<!-- STYLE DU HEADER -->
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+  }
+
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 40px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+  }
+
+  .nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+  }
+
+  .nav-links li a:hover {
+    color: #ccc;
+  }
+
+  .nav-right {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-icons {
+    display: flex;
+    gap: 12px;
+  }
+
+  .nav-icons img {
+    height: 30px;
+    cursor: pointer;
+  }
+
+  .profile {
+    text-align: center;
+  }
+
+  .profile img {
+    height: 48px;
+    border-radius: 6px;
+  }
+
+  .profile-name {
+    color: #fff;
+    font-size: 13px;
+    font-family: monospace;
+  }
+</style>
+
+<!-- SCRIPTS -->
+<script>
+  const playlist = [
+    "https://www.dropbox.com/scl/fi/ys9jb33tvz8k7xpsng58i/50smedly.mp3?rlkey=p0if89ncsc3tgh3flwisn0lgv&raw=1",
+    "https://www.dropbox.com/scl/fi/goa79f46tq9r19pyudpf0/_lisboa.mp3?rlkey=7vhoes7i2efohmuowrq4mfdie&raw=1",
+    "https://www.dropbox.com/scl/fi/iyr4dpwydq4l9purrm06e/raina.mp3?rlkey=bdsnvknaoxwqsetvq5aq4t7p6&raw=1",
+    "https://www.dropbox.com/scl/fi/x12r9tpxeqrpaq1lvu4cf/morning07.mp3?rlkey=srcwsyi0rz3ag6uyxbcaoh44x&raw=1",
+    "https://www.dropbox.com/scl/fi/5wcr07zphm8333v5x8jv4/5oclock.mp3?rlkey=lao7xbag3ke9adhrc6770cznf&raw=1"
+  ];
+
+  let currentTrack = 0;
+  const audio = document.getElementById("bg-music");
+  const toggleBtn = document.getElementById("toggle-music");
+  const nextBtn = document.getElementById("next-music");
+  let playing = true;
+
+  toggleBtn.addEventListener("click", () => {
+    if (playing) {
+      audio.pause();
+      toggleBtn.src = "https://i.imgur.com/pbFe8hV.png";
+    } else {
+      audio.play();
+      toggleBtn.src = "https://i.imgur.com/WHEdHwe.png";
+    }
+    playing = !playing;
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentTrack = (currentTrack + 1) % playlist.length;
+    audio.src = playlist[currentTrack];
+    if (playing) audio.play();
+  });
+
+  function copyMail() {
+    navigator.clipboard.writeText("rafricmak@gmail.com");
+    alert("Adresse e-mail copiée !");
+  }
+</script>
