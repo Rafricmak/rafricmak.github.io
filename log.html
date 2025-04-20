@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Logs</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      font-size: 16px;
+      overflow: hidden;
+    }
+
+    .console-container {
+      padding: 20px;
+      height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #console {
+      flex-grow: 1;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+
+    #input-line {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    #prompt {
+      margin-right: 10px;
+    }
+
+    #command {
+      background: none;
+      border: none;
+      color: white;
+      font-family: monospace;
+      font-size: 16px;
+      outline: none;
+      flex-grow: 1;
+    }
+
+    /* Bouton retour */
+    .back-arrow {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+    }
+
+    .back-arrow:hover {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- Bouton retour -->
+  <a href="index.html" class="back-arrow">&#8592;</a>
+
+  <div class="console-container">
+    <div id="console">
+      <div>Bienvenue dans le terminal de Rafricmak.</div>
+      <div>Liste des logs disponibles :</div>
+      <div>- rapport_avril.txt</div>
+      <div>- audio_corrompu.mp3</div>
+      <div>- photo_03.jpeg</div>
+      <div>- vidéo_sans_titre.mp4</div>
+      <div>Tape un nom de log pour y accéder.</div>
+    </div>
+
+    <div id="input-line">
+      <span id="prompt">&gt;</span>
+      <input type="text" id="command" autofocus autocomplete="off" />
+    </div>
+  </div>
+
+  <script>
+    const commandInput = document.getElementById("command");
+    const consoleOutput = document.getElementById("console");
+
+    const logs = {
+      "rapport_avril.txt": "https://exemple.com/logs/rapport_avril.txt",
+      "audio_corrompu.mp3": "https://exemple.com/logs/audio_corrompu.mp3",
+      "photo_03.jpeg": "https://exemple.com/logs/photo_03.jpeg",
+      "vidéo_sans_titre.mp4": "https://exemple.com/logs/video_sans_titre.mp4"
+    };
+
+    commandInput.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        const value = commandInput.value.trim();
+        if (value) {
+          const newLine = document.createElement("div");
+          newLine.textContent = "> " + value;
+          consoleOutput.appendChild(newLine);
+
+          if (logs[value]) {
+            const link = document.createElement("a");
+            link.href = logs[value];
+            link.textContent = "→ Ouvrir " + value;
+            link.target = "_blank";
+            link.style.color = "#0ff";
+            consoleOutput.appendChild(link);
+          } else {
+            const errorLine = document.createElement("div");
+            errorLine.textContent = "Fichier introuvable.";
+            consoleOutput.appendChild(errorLine);
+          }
+
+          commandInput.value = "";
+          consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
