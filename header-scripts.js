@@ -27,39 +27,40 @@ function copyMail() {
     { img: "https://i.gifer.com/JXmm.gif", link: "https://www.mozilla.org/en-US/firefox/new/" }
   ];
 
-const positions = [
-  { class: "pub-right", top: "5%" },
-  { class: "pub-right", top: "15%" },
-  { class: "pub-right", top: "25%" },
-  { class: "pub-right", top: "35%" },
-  { class: "pub-right", top: "65%" },
-  { class: "pub-right", top: "85%" },
-  { class: "pub-left", top: "5%" },
-  { class: "pub-left", top: "15%" },
-  { class: "pub-left", top: "25%" },
-  { class: "pub-left", top: "35%" },
-  { class: "pub-left", top: "65%" },
-  { class: "pub-left", top: "85%" }
-];
+  const positions = [
+    { class: "pub-right", top: "5%" },
+    { class: "pub-right", top: "15%" },
+    { class: "pub-right", top: "25%" },
+    { class: "pub-right", top: "35%" },
+    { class: "pub-right", top: "65%" },
+    { class: "pub-right", top: "85%" },
+    { class: "pub-left", top: "5%" },
+    { class: "pub-left", top: "15%" },
+    { class: "pub-left", top: "25%" },
+    { class: "pub-left", top: "35%" },
+    { class: "pub-left", top: "65%" },
+    { class: "pub-left", top: "85%" }
+  ];
 
-// Mélanger les positions de manière aléatoire
-const shuffledPositions = positions.sort(() => 0.5 - Math.random());
+  // Mélanger les positions de manière aléatoire
+  const shuffledPositions = positions.sort(() => 0.5 - Math.random());
 
-// Déterminer le nombre de publicités à afficher
-const numPubs = Math.min(9, pubs.length);
+  // Déterminer le nombre de publicités à afficher
+  const numPubs = Math.min(9, pubs.length);
 
-// Sélectionner les positions pour les publicités
-const selectedPositions = shuffledPositions.slice(0, numPubs);
+  // Sélectionner les positions pour les publicités
+  const selectedPositions = shuffledPositions.slice(0, numPubs);
 
-// Associer les publicités aux positions sélectionnées
-const shuffledPubs = selectedPositions.map((position, index) => {
-  return { ...position, pub: pubs[index] };
-});
+  // Associer les publicités aux positions sélectionnées
+  const shuffledPubs = selectedPositions.map((position, index) => {
+    return { ...position, pub: pubs[index] };
+  });
 
-console.log(shuffledPubs);
+  console.log(shuffledPubs);
 
-  shuffledPubs.forEach((pub, index) => {
-    const position = positions[index % positions.length];
+  shuffledPubs.forEach((item) => {
+    const pub = item.pub;
+    const position = item;
     const pubElement = document.createElement('a');
     pubElement.href = pub.link;
     pubElement.target = "_blank";
