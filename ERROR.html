@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>logs</title>
+  <title>ERROR</title>
   <style>
     html, body {
       margin: 0;
@@ -14,16 +14,25 @@
       cursor: crosshair;
     }
 
-    .gif {
+    .gif-link {
       position: absolute;
-      width: 150px;
+      display: block;
+      width: 200px;
       height: auto;
-      pointer-events: none;
+      pointer-events: auto;
+      z-index: 10;
+    }
+
+    .gif-link img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: none;
     }
 
     .back-button {
       position: absolute;
-      width: 70px;
+      width: 120px;
       height: auto;
       background: none;
       border: none;
@@ -36,21 +45,25 @@
       width: 100%;
       height: auto;
       display: block;
+      border: none;
     }
   </style>
 </head>
 <body>
+  <!-- BOUTON DE RETOUR (vers accueil) -->
   <button class="back-button" onclick="window.location.href='index.html'">
     <img src="https://i.gifer.com/Z16w.gif" alt="Retour">
   </button>
 
   <script>
-    const gifs = [
+    const gifUrls = [
       "https://i.gifer.com/45Ra.gif",
       "https://i.gifer.com/7qX0.gif",
       "https://i.gifer.com/Hfj6.gif",
       "https://i.gifer.com/WwaP.gif",
       "https://i.gifer.com/1JwJ.gif",
+      "https://i.gifer.com/y7.gif", // Celui-ci apparaît plus souvent
+      "https://i.gifer.com/y7.gif",
       "https://i.gifer.com/y7.gif",
       "https://i.gifer.com/XVo6.gif",
       "https://i.gifer.com/VZvw.gif",
@@ -58,24 +71,29 @@
       "https://i.gifer.com/ZC9Y.gif"
     ];
 
-    // Placement aléatoire du bouton
-    const button = document.querySelector('.back-button');
-    const buttonX = Math.random() * (window.innerWidth - 70);
-    const buttonY = Math.random() * (window.innerHeight - 70);
-    button.style.left = `${buttonX}px`;
-    button.style.top = `${buttonY}px`;
+    const gifCount = 30;
 
-    // Générer les gifs aléatoirement
-    for (let i = 0; i < 12; i++) {
-      const gif = document.createElement("img");
-      gif.src = gifs[Math.floor(Math.random() * gifs.length)];
-      gif.className = "gif";
-      gif.style.left = `${Math.random() * window.innerWidth}px`;
-      gif.style.top = `${Math.random() * window.innerHeight}px`;
-      gif.style.transform = `rotate(${Math.random() * 360}deg)`;
-      gif.style.opacity = 0.7 + Math.random() * 0.3;
-      document.body.appendChild(gif);
+    for (let i = 0; i < gifCount; i++) {
+      const link = document.createElement("a");
+      link.href = "#erreur"; // lien factice, tu pourras le changer
+      link.className = "gif-link";
+      link.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
+      link.style.top = `${Math.random() * (window.innerHeight - 200)}px`;
+      link.style.transform = `rotate(${Math.random() * 360}deg)`;
+      link.style.opacity = 0.8 + Math.random() * 0.2;
+
+      const img = document.createElement("img");
+      img.src = gifUrls[Math.floor(Math.random() * gifUrls.length)];
+
+      link.appendChild(img);
+      document.body.appendChild(link);
     }
+
+    // Position aléatoire du bouton de retour
+    const button = document.querySelector('.back-button');
+    const btnSize = 120;
+    button.style.left = `${Math.random() * (window.innerWidth - btnSize)}px`;
+    button.style.top = `${Math.random() * (window.innerHeight - btnSize)}px`;
   </script>
 </body>
 </html>
