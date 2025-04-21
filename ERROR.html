@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>ERREUR 404 ???</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      overflow: hidden;
+      position: relative;
+    }
 
+    .glitch-gif {
+      position: absolute;
+      pointer-events: none;
+      image-rendering: pixelated;
+    }
+
+    #return-btn {
+      position: absolute;
+      width: 200px;
+      height: 100px;
+      z-index: 9999;
+      background-image: url('https://i.gifer.com/Z16w.gif');
+      background-size: cover;
+      background-position: center;
+      border: none;
+      cursor: pointer;
+    }
+
+    #end-gif {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      max-width: 100%;
+      max-height: 40vh;
+    }
+  </style>
+</head>
+<body>
+  <!-- GIF final -->
+  <img src="https://i.gifer.com/UbIq.gif" id="end-gif" alt="fin">
+
+  <!-- Bouton retour -->
+  <button id="return-btn" onclick="window.location.href='index.html'"></button>
+
+  <script src="error.js"></script>
+</body>
+</html>
