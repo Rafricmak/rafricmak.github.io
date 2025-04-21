@@ -20,7 +20,7 @@
       width: 200px;
       height: auto;
       z-index: 10;
-      transition: all 0.3s ease;
+      pointer-events: auto;
     }
 
     .gif-link img {
@@ -28,7 +28,6 @@
       height: auto;
       display: block;
       border: none;
-      pointer-events: auto;
     }
 
     .back-button {
@@ -84,7 +83,7 @@
     // 🔧 Nombre de gifs aléatoires :
     const gifCount = 30;
 
-    // GIFS avec lien
+    // 🔁 GIFS aléatoires cliquables
     const gifsWithLinks = [
       { gif: "https://i.gifer.com/45Ra.gif", link: "page1.html" },
       { gif: "https://i.gifer.com/7qX0.gif", link: "page2.html" },
@@ -113,13 +112,15 @@
       { gif: "https://media.tenor.com/yRM6-XRvkM4AAAAj/error-gmod.gif", link: "page25.html" }
     ];
 
-    // Créer les gifs à l’écran
     const createdGifs = [];
+
     for (let i = 0; i < gifCount; i++) {
       const random = gifsWithLinks[Math.floor(Math.random() * gifsWithLinks.length)];
       const link = document.createElement("a");
       link.href = random.link;
       link.className = "gif-link";
+      link.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
+      link.style.top = `${Math.random() * (window.innerHeight - 200)}px`;
 
       const img = document.createElement("img");
       img.src = random.gif;
@@ -129,25 +130,31 @@
       createdGifs.push({ link, img });
     }
 
-    function repositionGifs() {
+    // Mise à jour toutes les 1 sec avec effet flash
+    setInterval(() => {
       createdGifs.forEach(obj => {
-        const gif = gifsWithLinks[Math.floor(Math.random() * gifsWithLinks.length)];
-        obj.link.href = gif.link;
-        obj.img.src = gif.gif;
-        obj.link.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
-        obj.link.style.top = `${Math.random() * (window.innerHeight - 200)}px`;
+        obj.link.style.opacity = "0"; // disparition
       });
-    }
 
-    setInterval(repositionGifs, 2000); // changement toutes les 2 secondes
+      setTimeout(() => {
+        createdGifs.forEach(obj => {
+          const gif = gifsWithLinks[Math.floor(Math.random() * gifsWithLinks.length)];
+          obj.link.href = gif.link;
+          obj.img.src = gif.gif;
+          obj.link.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
+          obj.link.style.top = `${Math.random() * (window.innerHeight - 200)}px`;
+          obj.link.style.opacity = "1"; // réapparition
+        });
+      }, 100); // 100ms entre les deux = clignotement glitch
+    }, 1000);
 
-    // BOUTON DE RETOUR POSITION
+    // Bouton retour position fixe mais aléatoire au chargement
     const button = document.querySelector('.back-button');
     const btnSize = 120;
     button.style.left = `${Math.random() * (window.innerWidth - btnSize)}px`;
     button.style.top = `${Math.random() * (window.innerHeight - btnSize)}px`;
 
-    // CURSEUR BUGGÉ
+    // Curseur buggé
     const glitchCursor = document.getElementById("cursor-glitch");
     const glitchImages = [
       "https://i.gifer.com/XVo6.gif",
