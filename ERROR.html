@@ -2,20 +2,22 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>ERREUR 404 ???</title>
+  <title>ERREUR ???</title>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       background: black;
       overflow: hidden;
-      position: relative;
+      height: 100vh;
+      width: 100vw;
     }
 
     .glitch-gif {
       position: absolute;
       pointer-events: none;
       image-rendering: pixelated;
+      z-index: 1;
     }
 
     #return-btn {
@@ -23,9 +25,10 @@
       width: 200px;
       height: 100px;
       z-index: 9999;
-      background-image: url('https://i.gifer.com/99dj.gif');
+      background-image: url('https://i.gifer.com/Z16w.gif');
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
       border: none;
       cursor: pointer;
     }
@@ -35,18 +38,28 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 1;
-      max-width: 1000%;
-      max-height: 40vh;
+      z-index: 5;
+      width: 100%;
+      height: auto;
+      max-height: 100vh;
+      object-fit: cover;
+      image-rendering: pixelated;
+      pointer-events: none;
+    }
+
+    a.return-link {
+      display: block;
+      position: absolute;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <!-- GIF final -->
-  <img src="https://i.gifer.com/UbIq.gif" id="end-gif" alt="fin">
+  <!-- Image de fond fin -->
+  <img src="https://i.gifer.com/UbIq.gif" id="end-gif" alt="Fin bugueuse">
 
-  <!-- Bouton retour -->
-  <button id="return-btn" onclick="window.location.href='index.html'"></button>
+  <!-- Bouton animé cliquable -->
+  <a href="index.html" class="return-link"><div id="return-btn"></div></a>
 
   <script src="error.js"></script>
 </body>
