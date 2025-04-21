@@ -20,6 +20,7 @@
       width: 200px;
       height: auto;
       z-index: 10;
+      transition: all 0.3s ease;
     }
 
     .gif-link img {
@@ -71,7 +72,7 @@
     <source src="https://www.dropbox.com/scl/fi/71itcjezdbwrjvgg0aizx/RoboticGlitchSoundEffects.mp3?rlkey=m7nvkc82w3glteifvzxojgt0k&raw=1" type="audio/mpeg">
   </audio>
 
-  <!-- CURSEUR CUSTOM -->
+  <!-- CURSEUR BUGGÉ -->
   <div class="cursor-glitch" id="cursor-glitch"></div>
 
   <!-- BOUTON DE RETOUR -->
@@ -83,7 +84,7 @@
     // 🔧 Nombre de gifs aléatoires :
     const gifCount = 30;
 
-    // 🔁 GIFS aléatoires cliquables
+    // GIFS avec lien
     const gifsWithLinks = [
       { gif: "https://i.gifer.com/45Ra.gif", link: "page1.html" },
       { gif: "https://i.gifer.com/7qX0.gif", link: "page2.html" },
@@ -112,22 +113,35 @@
       { gif: "https://media.tenor.com/yRM6-XRvkM4AAAAj/error-gmod.gif", link: "page25.html" }
     ];
 
+    // Créer les gifs à l’écran
+    const createdGifs = [];
     for (let i = 0; i < gifCount; i++) {
       const random = gifsWithLinks[Math.floor(Math.random() * gifsWithLinks.length)];
       const link = document.createElement("a");
       link.href = random.link;
       link.className = "gif-link";
-      link.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
-      link.style.top = `${Math.random() * (window.innerHeight - 200)}px`;
 
       const img = document.createElement("img");
       img.src = random.gif;
 
       link.appendChild(img);
       document.body.appendChild(link);
+      createdGifs.push({ link, img });
     }
 
-    // BOUTON DE RETOUR
+    function repositionGifs() {
+      createdGifs.forEach(obj => {
+        const gif = gifsWithLinks[Math.floor(Math.random() * gifsWithLinks.length)];
+        obj.link.href = gif.link;
+        obj.img.src = gif.gif;
+        obj.link.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
+        obj.link.style.top = `${Math.random() * (window.innerHeight - 200)}px`;
+      });
+    }
+
+    setInterval(repositionGifs, 2000); // changement toutes les 2 secondes
+
+    // BOUTON DE RETOUR POSITION
     const button = document.querySelector('.back-button');
     const btnSize = 120;
     button.style.left = `${Math.random() * (window.innerWidth - btnSize)}px`;
@@ -141,14 +155,12 @@
       "https://i.gifer.com/ZKZx.gif"
     ];
 
-    // change position et rotation quand on bouge la souris
     document.addEventListener("mousemove", e => {
       glitchCursor.style.left = `${e.clientX}px`;
       glitchCursor.style.top = `${e.clientY}px`;
       glitchCursor.style.transform = `scale(${1 + Math.random() * 0.5}) rotate(${Math.random() * 360}deg)`;
     });
 
-    // bug visuel : curseur qui change
     setInterval(() => {
       glitchCursor.style.opacity = Math.random() > 0.1 ? "1" : "0";
       glitchCursor.style.backgroundImage = `url('${glitchImages[Math.floor(Math.random() * glitchImages.length)]}')`;
