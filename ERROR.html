@@ -2,123 +2,80 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>ERREUR</title>
+  <title>logs</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
-      background: black;
-      color: white;
-      font-family: 'Courier New', monospace;
       overflow: hidden;
-    }
-
-    .background-image {
-      position: fixed;
-      top: 0;
-      left: 0;
+      background: url('https://i.gifer.com/UbIq.gif') center center / cover no-repeat;
+      height: 100%;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
+      cursor: crosshair;
     }
 
-    .error-content {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      text-align: center;
-      padding: 20px;
-    }
-
-    h1 {
-      font-size: 70px;
-      margin: 0 0 20px 0;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-    }
-
-    p {
-      font-size: 20px;
-      max-width: 600px;
-      margin-bottom: 40px;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    .gif {
+      position: absolute;
+      width: 150px;
+      height: auto;
+      pointer-events: none;
     }
 
     .back-button {
-      padding: 12px 30px;
-      font-size: 18px;
-      color: white;
-      background-color: transparent;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .back-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-    }
-
-    .star {
       position: absolute;
-      width: 100px;
-      height: 100px;
-      z-index: 2;
-      pointer-events: none;
+      width: 70px;
+      height: auto;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .back-button img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
   </style>
 </head>
 <body>
+  <button class="back-button" onclick="window.location.href='index.html'">
+    <img src="https://i.gifer.com/Z16w.gif" alt="Retour">
+  </button>
 
-  <!-- Fond animé -->
-  <img class="background-image" src="https://i.gifer.com/9KM5.gif" alt="Background">
-
-  <!-- Contenu principal -->
-  <div class="error-content">
-    <h1>404</h1>
-    <p>Cette page n’existe pas. Mais tu peux retourner te perdre ailleurs sur le site.</p>
-    <button class="back-button" onclick="window.location.href='index.html'">← Retour</button>
-  </div>
-
-  <!-- GIFs étoiles -->
   <script>
-    const starUrls = [
-      "https://i.gifer.com/origin/98/98767abf1efb9ba7b1155e27879fc851_w200.webp",
-      "https://i.gifer.com/origin/23/238a465012f48c55b9c96c351be7eadd_w200.webp",
-      "https://i.gifer.com/origin/ec/ecb0ad2af16787952d6868fb25db6e9d_w200.webp",
-      "https://i.gifer.com/origin/61/61ecadae76f23a6860db8d78de93c322_w200.webp",
-      "https://i.gifer.com/origin/92/9201ca103be3621c2b032f2151ff210e_w200.webp",
-      "https://i.gifer.com/origin/11/1153eae92f6e5f8831b0fb4ed9f2fcc2_w200.webp",
-      "https://cdn.pixabay.com/animation/2023/10/02/18/06/18-06-24-613_512.gif",
-      "https://cdn.pixabay.com/animation/2023/04/20/06/45/06-45-08-258_512.gif",
-      "https://cdn.pixabay.com/animation/2023/05/02/11/25/11-25-53-171_512.gif",
-      "https://cdn.pixabay.com/animation/2025/01/26/14/27/14-27-58-593_512.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0038.gif",
-      "https://www.gifsanimes.com/data/media/280/etoile-image-animee-0002.gif"
+    const gifs = [
+      "https://i.gifer.com/45Ra.gif",
+      "https://i.gifer.com/7qX0.gif",
+      "https://i.gifer.com/Hfj6.gif",
+      "https://i.gifer.com/WwaP.gif",
+      "https://i.gifer.com/1JwJ.gif",
+      "https://i.gifer.com/y7.gif",
+      "https://i.gifer.com/XVo6.gif",
+      "https://i.gifer.com/VZvw.gif",
+      "https://i.gifer.com/WG8L.gif",
+      "https://i.gifer.com/ZC9Y.gif"
     ];
 
-    function spawnStars(count = 15) {
-      for (let i = 0; i < count; i++) {
-        const img = document.createElement("img");
-        img.src = starUrls[Math.floor(Math.random() * starUrls.length)];
-        img.classList.add("star");
-        img.style.top = Math.random() * 90 + "%";
-        img.style.left = Math.random() * 90 + "%";
-        img.style.transform = `rotate(${Math.random() * 360}deg)`;
-        img.style.width = img.style.height = `${60 + Math.random() * 40}px`;
-        document.body.appendChild(img);
-      }
+    // Placement aléatoire du bouton
+    const button = document.querySelector('.back-button');
+    const buttonX = Math.random() * (window.innerWidth - 70);
+    const buttonY = Math.random() * (window.innerHeight - 70);
+    button.style.left = `${buttonX}px`;
+    button.style.top = `${buttonY}px`;
+
+    // Générer les gifs aléatoirement
+    for (let i = 0; i < 12; i++) {
+      const gif = document.createElement("img");
+      gif.src = gifs[Math.floor(Math.random() * gifs.length)];
+      gif.className = "gif";
+      gif.style.left = `${Math.random() * window.innerWidth}px`;
+      gif.style.top = `${Math.random() * window.innerHeight}px`;
+      gif.style.transform = `rotate(${Math.random() * 360}deg)`;
+      gif.style.opacity = 0.7 + Math.random() * 0.3;
+      document.body.appendChild(gif);
     }
-
-    spawnStars();
   </script>
-
 </body>
 </html>
