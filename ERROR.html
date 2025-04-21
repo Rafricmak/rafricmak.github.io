@@ -52,16 +52,24 @@
       position: fixed;
       width: 32px;
       height: 32px;
-      background-image: url('https://i.gifer.com/45Ra.gif');
       background-size: cover;
       pointer-events: none;
       z-index: 9999;
       mix-blend-mode: difference;
       transition: transform 0.1s ease;
     }
+
+    audio {
+      display: none;
+    }
   </style>
 </head>
 <body>
+
+  <!-- MUSIQUE GLITCH EN FOND -->
+  <audio autoplay loop>
+    <source src="https://www.dropbox.com/scl/fi/71itcjezdbwrjvgg0aizx/RoboticGlitchSoundEffects.mp3?rlkey=m7nvkc82w3glteifvzxojgt0k&raw=1" type="audio/mpeg">
+  </audio>
 
   <!-- CURSEUR CUSTOM -->
   <div class="cursor-glitch" id="cursor-glitch"></div>
@@ -72,9 +80,10 @@
   </button>
 
   <script>
-    // 🔧 Modifier ici le nombre de gifs aléatoires affichés :
+    // 🔧 Nombre de gifs aléatoires :
     const gifCount = 30;
 
+    // 🔁 GIFS aléatoires cliquables
     const gifsWithLinks = [
       { gif: "https://i.gifer.com/45Ra.gif", link: "page1.html" },
       { gif: "https://i.gifer.com/7qX0.gif", link: "page2.html" },
@@ -103,7 +112,6 @@
       { gif: "https://media.tenor.com/yRM6-XRvkM4AAAAj/error-gmod.gif", link: "page25.html" }
     ];
 
-    // Générer X gifs avec des duplications possibles
     for (let i = 0; i < gifCount; i++) {
       const random = gifsWithLinks[Math.floor(Math.random() * gifsWithLinks.length)];
       const link = document.createElement("a");
@@ -119,24 +127,32 @@
       document.body.appendChild(link);
     }
 
-    // Bouton retour position aléatoire
+    // BOUTON DE RETOUR
     const button = document.querySelector('.back-button');
     const btnSize = 120;
     button.style.left = `${Math.random() * (window.innerWidth - btnSize)}px`;
     button.style.top = `${Math.random() * (window.innerHeight - btnSize)}px`;
 
     // CURSEUR BUGGÉ
-    const cursor = document.getElementById('cursor-glitch');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-      cursor.style.transform = `scale(${1 + Math.random() * 0.5}) rotate(${Math.random() * 360}deg)`;
+    const glitchCursor = document.getElementById("cursor-glitch");
+    const glitchImages = [
+      "https://i.gifer.com/XVo6.gif",
+      "https://i.gifer.com/VAyR.gif",
+      "https://i.gifer.com/ZKZx.gif"
+    ];
+
+    // change position et rotation quand on bouge la souris
+    document.addEventListener("mousemove", e => {
+      glitchCursor.style.left = `${e.clientX}px`;
+      glitchCursor.style.top = `${e.clientY}px`;
+      glitchCursor.style.transform = `scale(${1 + Math.random() * 0.5}) rotate(${Math.random() * 360}deg)`;
     });
 
-    // Petit bug aléatoire : parfois il disparaît
+    // bug visuel : curseur qui change
     setInterval(() => {
-      cursor.style.opacity = Math.random() > 0.1 ? '1' : '0';
-    }, 200);
+      glitchCursor.style.opacity = Math.random() > 0.1 ? "1" : "0";
+      glitchCursor.style.backgroundImage = `url('${glitchImages[Math.floor(Math.random() * glitchImages.length)]}')`;
+    }, 1000);
   </script>
 </body>
 </html>
