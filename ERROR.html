@@ -11,7 +11,7 @@
       background: url('https://i.gifer.com/UbIq.gif') center center / cover no-repeat;
       height: 100%;
       width: 100%;
-      cursor: crosshair;
+      cursor: none;
     }
 
     .gif-link {
@@ -19,7 +19,6 @@
       display: block;
       width: 200px;
       height: auto;
-      pointer-events: auto;
       z-index: 10;
     }
 
@@ -28,6 +27,7 @@
       height: auto;
       display: block;
       border: none;
+      pointer-events: auto;
     }
 
     .back-button {
@@ -47,15 +47,34 @@
       display: block;
       border: none;
     }
+
+    .cursor-glitch {
+      position: fixed;
+      width: 32px;
+      height: 32px;
+      background-image: url('https://i.gifer.com/45Ra.gif');
+      background-size: cover;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      transition: transform 0.1s ease;
+    }
   </style>
 </head>
 <body>
-  <!-- BOUTON DE RETOUR (vers accueil) -->
+
+  <!-- CURSEUR CUSTOM -->
+  <div class="cursor-glitch" id="cursor-glitch"></div>
+
+  <!-- BOUTON DE RETOUR -->
   <button class="back-button" onclick="window.location.href='index.html'">
-    <img src="https://i.gifer.com/Z16w.gif" alt="Retour">
+    <img src="https://i.gifer.com/Tq9s.gif" alt="Retour">
   </button>
 
   <script>
+    // 🔧 Modifier ici le nombre de gifs aléatoires affichés :
+    const gifCount = 30;
+
     const gifsWithLinks = [
       { gif: "https://i.gifer.com/45Ra.gif", link: "page1.html" },
       { gif: "https://i.gifer.com/7qX0.gif", link: "page2.html" },
@@ -67,31 +86,57 @@
       { gif: "https://i.gifer.com/VZvw.gif", link: "page8.html" },
       { gif: "https://i.gifer.com/WG8L.gif", link: "page9.html" },
       { gif: "https://i.gifer.com/ZC9Y.gif", link: "page10.html" },
-      { gif: "https://i.gifer.com/y7.gif", link: "page11.html" },
-      { gif: "https://i.gifer.com/y7.gif", link: "page12.html" }
+      { gif: "https://i.gifer.com/XwI7.gif", link: "page11.html" },
+      { gif: "https://i.gifer.com/VAyR.gif", link: "page12.html" },
+      { gif: "https://i.gifer.com/ZHDd.gif", link: "page13.html" },
+      { gif: "https://i.gifer.com/7sZH.gif", link: "page14.html" },
+      { gif: "https://i.gifer.com/XlO9.gif", link: "page15.html" },
+      { gif: "https://i.gifer.com/YaDa.gif", link: "page16.html" },
+      { gif: "https://media.tenor.com/21OJudM5SigAAAAj/aldaa-error.gif", link: "page17.html" },
+      { gif: "https://c.tenor.com/9D5_ujXmsskAAAAd/tenor.gif", link: "page18.html" },
+      { gif: "https://media.tenor.com/YDcY_5M9lawAAAAj/error-red.gif", link: "page19.html" },
+      { gif: "https://c.tenor.com/OYFFEuY5SNEAAAAd/tenor.gif", link: "page20.html" },
+      { gif: "https://media.tenor.com/e_6G20pCUj0AAAAj/hereisrae-raexsamlo.gif", link: "page21.html" },
+      { gif: "https://media.tenor.com/iROp8uu-48IAAAAj/bloodbros-error.gif", link: "page22.html" },
+      { gif: "https://media.tenor.com/rTo3UblciDsAAAAj/technamin-tnm.gif", link: "page23.html" },
+      { gif: "https://media.tenor.com/6xWeRyXS_QcAAAAj/bouncy-error-msg.gif", link: "page24.html" },
+      { gif: "https://media.tenor.com/yRM6-XRvkM4AAAAj/error-gmod.gif", link: "page25.html" }
     ];
 
-const gifCount = 30;
-
-    gifsWithLinks.forEach(item => {
+    // Générer X gifs avec des duplications possibles
+    for (let i = 0; i < gifCount; i++) {
+      const random = gifsWithLinks[Math.floor(Math.random() * gifsWithLinks.length)];
       const link = document.createElement("a");
-      link.href = item.link;
+      link.href = random.link;
       link.className = "gif-link";
       link.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
       link.style.top = `${Math.random() * (window.innerHeight - 200)}px`;
 
       const img = document.createElement("img");
-      img.src = item.gif;
+      img.src = random.gif;
 
       link.appendChild(img);
       document.body.appendChild(link);
-    });
+    }
 
-    // Position aléatoire du bouton de retour
+    // Bouton retour position aléatoire
     const button = document.querySelector('.back-button');
     const btnSize = 120;
     button.style.left = `${Math.random() * (window.innerWidth - btnSize)}px`;
     button.style.top = `${Math.random() * (window.innerHeight - btnSize)}px`;
+
+    // CURSEUR BUGGÉ
+    const cursor = document.getElementById('cursor-glitch');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+      cursor.style.transform = `scale(${1 + Math.random() * 0.5}) rotate(${Math.random() * 360}deg)`;
+    });
+
+    // Petit bug aléatoire : parfois il disparaît
+    setInterval(() => {
+      cursor.style.opacity = Math.random() > 0.1 ? '1' : '0';
+    }, 200);
   </script>
 </body>
 </html>
