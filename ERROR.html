@@ -56,38 +56,34 @@
   </button>
 
   <script>
-    const gifUrls = [
-      "https://i.gifer.com/45Ra.gif",
-      "https://i.gifer.com/7qX0.gif",
-      "https://i.gifer.com/Hfj6.gif",
-      "https://i.gifer.com/WwaP.gif",
-      "https://i.gifer.com/1JwJ.gif",
-      "https://i.gifer.com/y7.gif", // Celui-ci apparaît plus souvent
-      "https://i.gifer.com/y7.gif",
-      "https://i.gifer.com/y7.gif",
-      "https://i.gifer.com/XVo6.gif",
-      "https://i.gifer.com/VZvw.gif",
-      "https://i.gifer.com/WG8L.gif",
-      "https://i.gifer.com/ZC9Y.gif"
+    const gifsWithLinks = [
+      { gif: "https://i.gifer.com/45Ra.gif", link: "page1.html" },
+      { gif: "https://i.gifer.com/7qX0.gif", link: "page2.html" },
+      { gif: "https://i.gifer.com/Hfj6.gif", link: "page3.html" },
+      { gif: "https://i.gifer.com/WwaP.gif", link: "page4.html" },
+      { gif: "https://i.gifer.com/1JwJ.gif", link: "page5.html" },
+      { gif: "https://i.gifer.com/y7.gif", link: "page6.html" },
+      { gif: "https://i.gifer.com/XVo6.gif", link: "page7.html" },
+      { gif: "https://i.gifer.com/VZvw.gif", link: "page8.html" },
+      { gif: "https://i.gifer.com/WG8L.gif", link: "page9.html" },
+      { gif: "https://i.gifer.com/ZC9Y.gif", link: "page10.html" },
+      { gif: "https://i.gifer.com/y7.gif", link: "page11.html" },
+      { gif: "https://i.gifer.com/y7.gif", link: "page12.html" }
     ];
 
-    const gifCount = 30;
-
-    for (let i = 0; i < gifCount; i++) {
+    gifsWithLinks.forEach(item => {
       const link = document.createElement("a");
-      link.href = "#erreur"; // lien factice, tu pourras le changer
+      link.href = item.link;
       link.className = "gif-link";
       link.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
       link.style.top = `${Math.random() * (window.innerHeight - 200)}px`;
-      link.style.transform = `rotate(${Math.random() * 360}deg)`;
-      link.style.opacity = 0.8 + Math.random() * 0.2;
 
       const img = document.createElement("img");
-      img.src = gifUrls[Math.floor(Math.random() * gifUrls.length)];
+      img.src = item.gif;
 
       link.appendChild(img);
       document.body.appendChild(link);
-    }
+    });
 
     // Position aléatoire du bouton de retour
     const button = document.querySelector('.back-button');
