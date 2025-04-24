@@ -1,7 +1,11 @@
 <!-- HEADER PARTAGÉ POUR TOUTES LES PAGES -->
 <nav>
+  <!-- LIEN SUGGESTIONS EN HAUT À GAUCHE -->
+  <div class="nav-suggestions">
+    <a href="suggestions.html">Suggestions</a>
+  </div>
+
   <ul class="nav-links">
-    <li><a href="suggestions.html">Suggestions</a></li>
     <li><a href="ERROR.html">ERROR</a></li>
     <li><a href="logs.html">Logs</a></li>
     <li><a href="index.html">Accueil</a></li>
@@ -41,6 +45,24 @@
     height: 60px;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
+  }
+
+  .nav-suggestions {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+  }
+
+  .nav-suggestions a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+  }
+
+  .nav-suggestions a:hover {
+    color: #ccc;
   }
 
   .nav-links {
