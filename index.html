@@ -146,38 +146,27 @@
 
     <script>
     // Définition de la séquence du Konami Code : HAUT, HAUT, BAS, BAS, GAUCHE, DROITE, GAUCHE, DROITE, B, A, ENTER
-    // KeyCodes : 38(Haut), 40(Bas), 37(Gauche), 39(Droite), 66(B), 65(A), 13(Enter)
     const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
     let konamiIndex = 0; // Index de la prochaine touche attendue
 
-    // Écoute des événements clavier sur tout le document
     document.addEventListener('keydown', function(event) {
-      // Récupérer le code de la touche pressée
       const keyPressed = event.keyCode;
 
-      // Vérifier si la touche pressée correspond à la prochaine touche dans la séquence
       if (keyPressed === konamiCode[konamiIndex]) {
-        konamiIndex++; // Passer à la touche suivante
+        konamiIndex++;
 
-        // Si l'index a atteint la fin du tableau, le code est complet
         if (konamiIndex === konamiCode.length) {
           triggerSecretPage();
-          konamiIndex = 0; // Réinitialiser pour pouvoir refaire le code si besoin
+          konamiIndex = 0;
         }
       } else {
-        // Si la touche est fausse, réinitialiser la séquence
         konamiIndex = 0;
       }
     });
 
-    // Fonction qui s'exécute quand le code est entré
     function triggerSecretPage() {
-      // Vous pouvez remplacer cette alerte par un effet visuel plus subtil si vous voulez !
-      alert('Code ACCEPTÉ. La réalité se fragmente...'); 
-
-      // >>>>>>> MODIFIER ICI POUR CHANGER LA DESTINATION <<<<<<<
-      // Assurez-vous d'avoir créé ce fichier HTML dans votre dépôt !
-      window.location.href = 'konami_secret.html'; 
+      alert('Code ACCEPTÉ. La réalité se fragmente...'); 
+      window.location.href = 'konami_secret.html'; 
     }
   </script>
 </body>
