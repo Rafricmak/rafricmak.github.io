@@ -81,35 +81,3 @@ function copyMail() {
     if (container) container.appendChild(pubElement);
   });
 })();
-
-
-// >>> DÉBUT DU KONAMI CODE (Ajouté à la fin du fichier pour la fiabilité) <<<
-
-// Définition de la séquence du Konami Code : HAUT, HAUT, BAS, BAS, GAUCHE, DROITE, GAUCHE, DROITE, B, A, ENTER
-const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
-let konamiIndex = 0;
-
-// Écoute des événements clavier sur tout le document
-document.addEventListener('keydown', function(event) {
-    const keyPressed = event.keyCode;
-
-    if (keyPressed === konamiCode[konamiIndex]) {
-        konamiIndex++;
-        
-        if (konamiIndex === konamiCode.length) {
-            triggerSecretPage();
-            konamiIndex = 0;
-        }
-    } else {
-        konamiIndex = 0;
-    }
-});
-
-// Action à déclencher
-function triggerSecretPage() {
-    // Si vous souhaitez une redirection sans alerte, commentez la ligne 'alert'
-    alert('Code ACCEPTÉ. La réalité se fragmente...');
-    window.location.href = 'konami_secret.html';
-}
-
-// >>> FIN DU KONAMI CODE <<<
