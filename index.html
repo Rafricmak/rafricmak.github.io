@@ -1,336 +1,179 @@
 <!DOCTYPE html>
-
 <html lang="fr">
-
 <head>
-
-  <meta name="google-site-verification" content="a_hT1rZAUEekWU-n4mB-Aq9cRKfyO2YmmMvJm1uU8Vk" />
-
-  <meta charset="UTF-8">
-
-  <title>Bienvenue</title>
-
-  <style>
-
-    html, body {
-
-      margin: 0;
-
-      padding: 0;
-
-      height: 100%;
-
-      overflow: hidden;
-
-      font-family: 'Courier New', monospace;
-
-      color: #ffffff;
-
-    }
-
-
-
-    /* ÉTOILES EN FOND */
-
-    #background-stars {
-
-      position: fixed;
-
-      top: 0;
-
-      left: 0;
-
-      width: 100%;
-
-      height: 100%;
-
-      background: url('https://i.gifer.com/CTM.gif') center center / cover no-repeat;
-
-      z-index: -3;
-
-    }
-
-
-
-    /* IMAGE CENTRALE FIXÉE */
-
-    #background-main {
-
-      position: fixed;
-
-      top: 0;
-
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      width: 1300px;
-
-      height: 100%;
-
-      background: url('https://i.gifer.com/3Hvu.gif') top center no-repeat;
-
-      background-size: 1300px auto;
-
-      z-index: -2;
-
-      pointer-events: none;
-
-    }
-
-
-
-    /* CONTENU */
-
-    .wrapper {
-
-      padding-top: 60px;
-
-      display: flex;
-
-      justify-content: center;
-
-      align-items: center;
-
-      height: calc(100vh - 60px);
-
-      text-align: center;
-
-      position: relative;
-
-      z-index: 1;
-
-    }
-
-
-
-    .content {
-
-      max-width: 1000px;
-
-      width: 100%;
-
-    }
-
-
-
-    h1, p, h2 {
-
-      margin: 10px 0;
-
-    }
-
-
-
-    .section-options {
-
-      display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 40px 40px;
-
-      justify-items: center;
-
-      margin-top: 30px;
-
-    }
-
-
-
-    .option-block {
-
-      width: 250px;
-
-      text-align: center;
-
-    }
-
-
-
-    .option-block p {
-
-      font-size: 14px;
-
-      margin-bottom: 10px;
-
-    }
-
-
-
-    .option-block img {
-
-      width: 100%;
-
-      cursor: pointer;
-
-      display: block;
-
-    }
-
-  </style>
+  <meta name="google-site-verification" content="a_hT1rZAUEekWU-n4mB-Aq9cRKfyO2YmmMvJm1uU8Vk" />
+  <meta charset="UTF-8">
+  <title>Bienvenue</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Courier New', monospace;
+      color: #ffffff;
+    }
+
+    /* ÉTOILES EN FOND */
+    #background-stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.gifer.com/CTM.gif') center center / cover no-repeat;
+      z-index: -3;
+    }
+
+    /* IMAGE CENTRALE FIXÉE */
+    #background-main {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1300px;
+      height: 100%;
+      background: url('https://i.gifer.com/3Hvu.gif') top center no-repeat;
+      background-size: 1300px auto;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* CONTENU */
+    .wrapper {
+      padding-top: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 60px);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content {
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    h1, p, h2 {
+      margin: 10px 0;
+    }
+
+    .section-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 40px;
+      justify-items: center;
+      margin-top: 30px;
+    }
+
+    .option-block {
+      width: 250px;
+      text-align: center;
+    }
+
+    .option-block p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .option-block img {
+      width: 100%;
+      cursor: pointer;
+      display: block;
+    }
+
+  </style>
 
 </head>
 
 
-
 <body>
 
-  <!-- FOND ÉTOILES -->
-
-  <div id="background-stars"></div>
-
-
-
-  <!-- IMAGE CENTRALE -->
-
-  <div id="background-main"></div>
-
-
-
-  <!-- HEADER -->
-
-  <div id="header"></div>
-
-  <script>
-
-    fetch("header.html")
-
-      .then(res => res.text())
-
-      .then(html => {
-
-        document.getElementById("header").innerHTML = html;
-
-        const script = document.createElement('script');
-
-        script.src = "header-scripts.js";
-
-        document.body.appendChild(script);
-
-      });
-
-  </script>
-
-
-
-  <!-- CONTENU -->
-
-  <div class="wrapper">
-
-    <div class="content">
-
-      <h1>Bienvenue sur le site de Rafricmak</h1>
-
-      <p>Cette page ne sert à rien. Tout comme notre misérable existence.</p>
-
-      <p>Mais j'ai un site ! C'est cool hein ?</p>
-
-      <h2>Alors, vous voulez faire quoi ?</h2>
-
-
-
-      <div class="section-options">
-
-        <div class="option-block">
-
-          <p>Vous en avez marre d'avoir une vie aussi merdique ?<br>
-
-          Les réponses sont ici ! Et si jamais il en manque, demandez moi !</p>
-
-          <a href="faq.html">
-
-            <img src="https://i.gifer.com/72gi.gif" alt="FAQ">
-
-          </a>
-
-        </div>
-
-
-
-        <div class="option-block">
-
-          <p>Vous souhaitez observer la magnificence du monde ?<br>
-
-          Alors c'est ici ! Hein comment ça la mienne ? Oh vous me gênez là !<br>(mais ça reste ici)</p>
-
-          <a href="galerie.html">
-
-            <img src="https://i.gifer.com/5FBi.gif" alt="Galerie">
-
-          </a>
-
-        </div>
-
-
-
-        <div class="option-block">
-
-          <p>Venez clubber un max !<br>Le fun est à votre portée !</p>
-
-          <a href="logs.html">
-
-            <img src="https://i.gifer.com/Dtk.gif" alt="Logs">
-
-          </a>
-
-        </div>
-
-
-
-        <div class="option-block">
-
-          <p>En travaux pour l'instant désolé !</p>
-
-          <a href="ERROR.html">
-
-            <img src="https://i.gifer.com/ZSj2.gif" alt="À venir">
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-  
-  <script>
+    <div id="background-stars"></div>
+
+    <div id="background-main"></div>
+
+    <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("header").innerHTML = html;
+        const script = document.createElement('script');
+        script.src = "header-scripts.js";
+        document.body.appendChild(script);
+      });
+  </script>
+
+
+    <div class="wrapper">
+    <div class="content">
+      <h1>Bienvenue sur le site de Rafricmak</h1>
+      <p>Cette page ne sert à rien. Tout comme notre misérable existence.</p>
+      <p>Mais j'ai un site ! C'est cool hein ?</p>
+      <h2>Alors, vous voulez faire quoi ?</h2>
+
+      <div class="section-options">
+        <div class="option-block">
+          <p>Vous en avez marre d'avoir une vie aussi merdique ?<br>
+          Les réponses sont ici ! Et si jamais il en manque, demandez moi !</p>
+          <a href="faq.html">
+            <img src="https://i.gifer.com/72gi.gif" alt="FAQ">
+          </a>
+        </div>
+
+        <div class="option-block">
+          <p>Vous souhaitez observer la magnificence du monde ?<br>
+          Alors c'est ici ! Hein comment ça la mienne ? Oh vous me gênez là !<br>(mais ça reste ici)</p>
+          <a href="galerie.html">
+            <img src="https://i.gifer.com/5FBi.gif" alt="Galerie">
+          </a>
+        </div>
+
+        <div class="option-block">
+          <p>Venez clubber un max !<br>Le fun est à votre portée !</p>
+          <a href="logs.html">
+            <img src="https://i.gifer.com/Dtk.gif" alt="Logs">
+          </a>
+        </div>
+
+        <div class="option-block">
+          <p>En travaux pour l'instant désolé !</p>
+          <a href="ERROR.html">
+            <img src="https://i.gifer.com/ZSj2.gif" alt="À venir">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
     // Définition de la séquence du Konami Code : HAUT, HAUT, BAS, BAS, GAUCHE, DROITE, GAUCHE, DROITE, B, A, ENTER
-    // KeyCodes : 38(Haut), 40(Bas), 37(Gauche), 39(Droite), 66(B), 65(A), 13(Enter)
     const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
-    let konamiIndex = 0; // Index de la prochaine touche attendue
+    let konamiIndex = 0;
 
-    // Écoute des événements clavier sur tout le document
     document.addEventListener('keydown', function(event) {
-      // Récupérer le code de la touche pressée
       const keyPressed = event.keyCode;
 
-      // Vérifier si la touche pressée correspond à la prochaine touche dans la séquence
       if (keyPressed === konamiCode[konamiIndex]) {
-        konamiIndex++; // Passer à la touche suivante
+        konamiIndex++;
 
-        // Si l'index a atteint la fin du tableau, le code est complet
         if (konamiIndex === konamiCode.length) {
           triggerSecretPage();
-          konamiIndex = 0; // Réinitialiser pour pouvoir refaire le code si besoin
+          konamiIndex = 0;
         }
       } else {
-        // Si la touche est fausse, réinitialiser la séquence
         konamiIndex = 0;
       }
     });
 
-    // Fonction qui s'exécute quand le code est entré
     function triggerSecretPage() {
-      // Vous pouvez remplacer cette alerte par un effet visuel plus subtil si vous voulez !
-      alert('Code ACCEPTÉ. La réalité se fragmente...'); 
-
-      // >>>>>>> MODIFIER ICI POUR CHANGER LA DESTINATION <<<<<<<
-      // Assurez-vous d'avoir créé ce fichier HTML dans votre dépôt !
-      window.location.href = 'konami_secret.html'; 
+      alert('Code ACCEPTÉ. La réalité se fragmente...'); 
+      window.location.href = 'konami_secret.html'; 
     }
-    
+</script>
+
 </body>
 </html>
